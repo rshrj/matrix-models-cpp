@@ -6,7 +6,7 @@ ODIR = obj
 SDIR = src
 INC = -Iinclude
 LIB = -Llib
-LIBMAT = -Lmatrices
+LIBMAT = -lmatrices
 CFLAGS = -Wall
 RUNS = runs
 
@@ -20,7 +20,13 @@ $(OUT): $(OBJS)
 	ar rvs $(OUT) $^
 
 %.prog: $(SDIR)/%.cpp
+	mkdir -p $(BIN)
 	$(CC) -o $(patsubst %.prog, $(BIN)/%, $@) $< $(INC) $(LIB) $(LIBMAT) $(CFLAGS)
+
+all:
+	mkdir -p ./$(ODIR)/matrices
+	make $(ODIR)/matrices/Matrices.o
+	make $(OUT)
 
 .PHONY: clean
 
