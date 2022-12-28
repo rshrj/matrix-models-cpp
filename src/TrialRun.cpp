@@ -13,15 +13,38 @@ int main(int argc, char **argv)
   const string f_file = "./external/F/N" + to_string(N) + ".dat";
   const f_type masterF(f_file);
 
+  std::string pickedState = "";
+  if (argc == 2)
+  {
+    try
+    {
+      pickedState = argv[1];
+      if (!filesystem::exists("./runs/States/" + pickedState + ".dat"))
+      {
+        cerr << "Invalid file" << endl;
+        return (EXIT_FAILURE);
+      }
+    }
+    catch (invalid_argument &e)
+    {
+      cerr << "Invalid file" << endl;
+      return (EXIT_FAILURE);
+    }
+  } else {
+    cerr << "Invalid argument" << endl;
+    return (EXIT_FAILURE);
+  }
+
   ofstream outfile;
   string filename = randomName();
 
-  string outdir = "./runs/Trial";
+  string outdir = "./runs/Trials/" + pickedState;
   filesystem::create_directories(outdir);
 
   outfile.open(outdir + "/" + filename + ".dat");
 
-  auto state = randomStateFixedEnergy(1.0, masterF);
+  auto state0 = loadState("./runs/States/" + pickedState + ".dat");
+  auto state = perturbRandomly(state0, pow(10, -6), masterF);
 
   container_type q = state.first;
   container_type p = state.second;
@@ -29,8 +52,8 @@ int main(int argc, char **argv)
   typedef symplectic_rkn_sb3a_mclachlan<container_type> stepper_type;
 
   const double start_time = 0.0;
-  const double end_time = 10.0;
-  const double dt = 0.1;
+  const double end_time = 1.0;
+  const double dt = 0.3;
 
   integrate_const(
       stepper_type(),

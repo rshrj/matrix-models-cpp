@@ -122,9 +122,15 @@ struct streaming_observer_radius
 
 boost::array<double, N * N - 1> randomState();
 
-std::pair<container_type, container_type> randomStateFixedEnergy(const double E, const f_type F);
+std::pair<container_type, container_type> randomStateFixedEnergy(const double, const f_type);
 
-std::pair<container_type, container_type> rSFEI(const double E, const f_type F);
+std::pair<container_type, container_type> loadState(std::string);
+
+void saveState(std::pair<container_type, container_type>, std::string);
+
+std::pair<container_type, container_type> perturbRandomly(std::pair<container_type, container_type>, double, const f_type);
+
+std::pair<container_type, container_type> rSFEI(const double, const f_type);
 
 std::string randomName();
 
