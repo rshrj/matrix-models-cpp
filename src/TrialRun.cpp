@@ -52,8 +52,8 @@ int main(int argc, char **argv)
   typedef symplectic_rkn_sb3a_mclachlan<container_type> stepper_type;
 
   const double start_time = 0.0;
-  const double end_time = 1.0;
-  const double dt = 0.3;
+  const double end_time = 1000.0;
+  const double dt = 0.1;
 
   integrate_const(
       stepper_type(),
