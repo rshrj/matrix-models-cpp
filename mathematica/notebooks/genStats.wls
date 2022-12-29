@@ -10,13 +10,16 @@ stateFiles = FileNames[All, "../../runs/Trials"];
 msg = "";
 Monitor[Do[Module[{stStr, pertStates, data, meanSize, \[Delta]S, \[Delta]SSD, tS, linearGrowth, lm, slope, linearFit, res, mainPlot, op}, (
 msg = "";
+If[$FrontEnd==Null, Print["A = "<>ToString[A]]];
 stStr = FileNameTake@stateFiles[[A]];
 pertStates = FileNames[All, stateFiles[[A]]];
 
 msg = "Importing data";
+If[$FrontEnd==Null, Print[msg]];
 data  =Monitor[Table[Import[pertStates[[k]], "Table"], {k, 1, Length[pertStates]}], ProgressIndicator[(k-1)/(Length[pertStates]-1)]];
 
 msg = "Computing mean size";
+If[$FrontEnd==Null, Print[msg]];
 meanSize = Module[{m, steps, xav, t, tSteps}, (
 m = Dimensions[data][[1]];
 tSteps = Dimensions[data][[2]];
@@ -30,6 +33,7 @@ Monitor[Table[{t[[k]],1/m Sum[1/2 Total@(#^2&/@(data[[A, k, 2;;(steps-1)/2]]-xav
 )];
 
 msg = "Computing characteristics";
+If[$FrontEnd==Null, Print[msg]];
 \[Delta]S=Mean@Log@(Select[meanSize, #[[1]]>100&][[All, 2]]);
 \[Delta]SSD=StandardDeviation@Log@(Select[meanSize, #[[1]]>100&][[All, 2]]);
 tS = First@SelectFirst[meanSize, Abs[Log[#[[2]]]-\[Delta]S]<\[Delta]SSD&];
@@ -38,6 +42,7 @@ lm = LinearModelFit[linearGrowth, t, t];
 slope = D[Normal[lm], t];
 
 msg = "Plotting graphs";
+If[$FrontEnd==Null, Print[msg]];
 linearFit=Plot[lm[t], {t, -10, 500}, PlotStyle->{Dashed, Gray}];
 
 res = SetPrecision[{tS, \[Delta]S, \[Delta]SSD, slope}, 3];
@@ -58,9 +63,11 @@ linearFit
 }];
 
 msg = "Exporting graph";
+If[$FrontEnd==Null, Print[msg]];
 Export["../plots/"<>stStr<>".pdf", mainPlot, ImageResolution->300];
 
 msg = "Exporting result";
+If[$FrontEnd==Null, Print[msg]];
 op=OpenAppend["../stats.dat"];
 WriteString[op, StringRiffle[Join[{stStr}, ToString/@res], "    "]<>"\n"];
 Close[op];
