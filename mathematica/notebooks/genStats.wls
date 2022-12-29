@@ -7,6 +7,8 @@ $f =Import["../../external/F/N"<>ToString[$N]<>".dat", "Table"]//Flatten//ArrayR
 
 stateFiles = FileNames[All, "../../runs/Trials"];
 
+If[$FrontEnd==Null, Off[FrontEndObject::notavail]];
+
 msg = "";
 Monitor[Do[Module[{stStr, pertStates, data, meanSize, \[Delta]S, \[Delta]SSD, tS, linearGrowth, lm, slope, linearFit, res, mainPlot, op}, (
 msg = "";
