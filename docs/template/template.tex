@@ -1,0 +1,65 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{csquotes}
+\usepackage[none]{hyphenat}
+\usepackage{mathtools, amssymb, bm, physics}
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{titling}
+\pretitle{\noindent\Large\bfseries\scshape}
+\posttitle{\\ \rule{\linewidth}{0.05cm}\vspace{0.5cm}}
+\preauthor{\small}
+\postauthor{\\[0.5cm]}
+\predate{\small}
+\postdate{}
+
+\usepackage{titlesec}
+\titleformat{\section}[hang]
+{\LARGE\bfseries\scshape}
+{}{0pt}{}
+\titleformat{\subsection}[hang]
+{\large\bfseries}
+{}{0pt}{}[]
+
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{0.95}
+\newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
+
+\usepackage{graphicx}
+\graphicspath{ {./figures/} }
+
+\usepackage[backend=biber, style=numeric-comp, sorting=ynt]{biblatex}
+\addbibresource{./references/main.bib}
+
+\usepackage{newpxtext, newpxmath}
+
+% Useful commands
+\newcommand{\B}[1]{\boldsymbol{#1}}
+
+\title{Title}
+\author{
+  {\bfseries Rishi Raj\protect\footnote{Email: \href{mailto:rishiraj.1012exp@gmail.com}{rishiraj.1012exp@gmail.com}}} \\ Department of Physics, IIT Madras, Chennai
+}
+\date{\today}
+
+\sloppy
+
+\begin{document}
+  \maketitle
+
+  \tableofcontents
+  
+  \numberwithin{equation}{section}
+
+  \section{A Section}
+
+  \medskip
+
+  \printbibliography[heading=bibintoc, title={References}]
+
+\end{document}

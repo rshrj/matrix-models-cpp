@@ -4,3 +4,5 @@ runs/
 
 mathematica/plots/
 mathematica/stats*
+
+build/

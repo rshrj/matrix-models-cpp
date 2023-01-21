@@ -3,7 +3,8 @@
 
 #include "matrices/Matrices.hpp"
 
-double radius(const container_type &q)
+template <size_t N, size_t K>
+double radius(const container_type<N, K> &q)
 {
   double sum = 0.0;
   for (size_t i = 0; i < K; ++i)
@@ -11,7 +12,8 @@ double radius(const container_type &q)
   return sum;
 }
 
-double energy(const container_type &q, const container_type &p, const f_type &F)
+template <size_t N, size_t K>
+double energy(const container_type<N, K> &q, const container_type<N, K> &p, const f_type<N> &F)
 {
   double sum = 0.0;
   for (size_t i = 0; i < K; ++i)
@@ -24,6 +26,7 @@ double energy(const container_type &q, const container_type &p, const f_type &F)
   return sum;
 }
 
+template <size_t N>
 boost::array<double, N * N - 1> randomState()
 {
   std::random_device rd;
@@ -41,15 +44,16 @@ boost::array<double, N * N - 1> randomState()
   return state;
 }
 
-std::pair<container_type, container_type> randomStateFixedEnergy(const double E, const f_type F)
+template <size_t N, size_t K>
+std::pair<container_type<N, K>, container_type<N, K>> randomStateFixedEnergy(const double E, const f_type<N> F)
 {
-  container_type q;
+  container_type<N, K> q;
   for (size_t k = 0; k < K; ++k)
   {
     q[k] = randomState();
   }
 
-  container_type p;
+  container_type<N, K> p;
   for (size_t k = 0; k < K; ++k)
   {
     p[k] = 0.0;
@@ -65,13 +69,14 @@ std::pair<container_type, container_type> randomStateFixedEnergy(const double E,
   return std::make_pair(q, p);
 }
 
-std::pair<container_type, container_type> loadState(std::string stateFile)
+template <size_t N, size_t K>
+std::pair<container_type<N, K>, container_type<N, K>> loadState(std::string stateFile)
 {
   std::ifstream fin (stateFile);
 
   std::string tempStr;
 
-  container_type q, p;
+  container_type<N, K> q, p;
 
   for (size_t k = 0; k < K; ++k)
   {
@@ -110,10 +115,11 @@ std::pair<container_type, container_type> loadState(std::string stateFile)
   return std::make_pair(q, p);
 }
 
-void saveState(std::pair<container_type, container_type> state, std::string stateFile)
+template <size_t N, size_t K>
+void saveState(std::pair<container_type<N, K>, container_type<N, K>> state, std::string stateFile)
 {
-  container_type q = state.first;
-  container_type p = state.second;
+  container_type<N, K> q = state.first;
+  container_type<N, K> p = state.second;
 
   std::ofstream outfile;
 
@@ -129,10 +135,11 @@ void saveState(std::pair<container_type, container_type> state, std::string stat
   outfile.close();
 }
 
-std::pair<container_type, container_type> perturbRandomly(std::pair<container_type, container_type> state, double epsilon, const f_type F)
+template <size_t N, size_t K>
+std::pair<container_type<N, K>, container_type<N, K>> perturbRandomly(std::pair<container_type<N, K>, container_type<N, K>> state, double epsilon, const f_type<N> F)
 {
-  container_type q = state.first;
-  container_type p = state.second;
+  container_type<N, K> q = state.first;
+  container_type<N, K> p = state.second;
 
   for (size_t k = 0; k < K; ++k)
   {
@@ -150,15 +157,16 @@ std::pair<container_type, container_type> perturbRandomly(std::pair<container_ty
 
 }
 
-std::pair<container_type, container_type> rSFEI(const double E, const f_type F)
+template <size_t N, size_t K>
+std::pair<container_type<N, K>, container_type<N, K>> rSFEI(const double E, const f_type<N> F)
 {
-  container_type q;
+  container_type<N, K> q;
   for (size_t k = 0; k < K; ++k)
   {
     q[k] = randomState();
   }
 
-  container_type p;
+  container_type<N, K> p;
   for (size_t k = 0; k < K; ++k)
   {
     p[k] = randomState();

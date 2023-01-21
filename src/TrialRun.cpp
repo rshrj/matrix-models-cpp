@@ -10,8 +10,32 @@ int main(int argc, char **argv)
   using namespace std;
   using namespace boost::numeric::odeint;
 
+  const size_t N = 2;
+  const size_t K = 2;
+  if (argc == 3)
+  {
+    try
+    {
+      N = argv[1];
+      K = argc[2];
+      if (N < 2 || K < 2)
+      {
+        cerr << "N, K must be >= 2" << endl;
+        return (EXIT_FAILURE);
+      }
+    }
+    catch (invalid_argument &e)
+    {
+      cerr << "Invalid (N, K)" << endl;
+      return (EXIT_FAILURE);
+    }
+  } else {
+    cerr << "Specify (N, K)" << endl;
+    return (EXIT_FAILURE);
+  }
+
   const string f_file = "./external/F/N" + to_string(N) + ".dat";
-  const f_type masterF(f_file);
+  const f_type<N> masterF(f_file);
 
   std::string pickedState = "";
   if (argc == 2)

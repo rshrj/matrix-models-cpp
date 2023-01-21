@@ -6,18 +6,21 @@
 
 #include "MatrixType.hpp"
 
-const size_t N = 8;
-const size_t K = 3;
+template <size_t N>
+using matrix_type = matrix<double, N>;
 
-typedef matrix<double, N> matrix_type;
-typedef foo<double, N> f_type;
-typedef boost::array<matrix_type, K> container_type;
+template <size_t N>
+using f_type = foo<double, N>;
 
+template <size_t N, size_t K>
+using container_type = boost::array<matrix_type<N>, K>;
+
+template <size_t N, size_t K>
 struct bfss_coor
 {
   bfss_coor(void) {}
 
-  void operator()(const container_type &p, container_type &dqdt) const
+  void operator()(const container_type<N, K> &p, container_type<N, K> &dqdt) const
   {
     for (size_t i = 0; i < K; ++i)
     {
@@ -26,14 +29,15 @@ struct bfss_coor
   }
 };
 
+template <size_t N, size_t K>
 struct bfss_momentum
 {
 
-  const f_type &m_F;
+  const f_type<N> &m_F;
 
-  bfss_momentum(const f_type &F) : m_F(F) {}
+  bfss_momentum(const f_type<N> &F) : m_F(F) {}
 
-  void operator()(const container_type &q, container_type &dpdt) const
+  void operator()(const container_type<N, K> &q, container_type<N, K> &dpdt) const
   {
     for (size_t k = 0; k < K; ++k)
     {
@@ -46,6 +50,7 @@ struct bfss_momentum
   }
 };
 
+template <size_t N, size_t K>
 struct streaming_observer_elements
 {
   std::ostream &m_out;
@@ -55,7 +60,7 @@ struct streaming_observer_elements
   template <class State>
   void operator()(const State &s, double t) const
   {
-    container_type q = s.first;
+    container_type<N, K> q = s.first;
     m_out << t;
     for (size_t i = 0; i < K; ++i)
       m_out << "    " << q[i];
@@ -63,6 +68,7 @@ struct streaming_observer_elements
   }
 };
 
+template <size_t N, size_t K>
 struct streaming_observer_elements_with_momenta
 {
   std::ostream &m_out;
@@ -72,8 +78,8 @@ struct streaming_observer_elements_with_momenta
   template <class State>
   void operator()(const State &s, double t) const
   {
-    container_type q = s.first;
-    container_type p = s.second;
+    container_type<N, K> q = s.first;
+    container_type<N, K> p = s.second;
     m_out << t;
     for (size_t i = 0; i < K; ++i)
       m_out << "    " << q[i];
@@ -84,27 +90,31 @@ struct streaming_observer_elements_with_momenta
   }
 };
 
-double radius(const container_type &q);
+template <size_t N, size_t K>
+double radius(const container_type<N, K> &q);
 
-double energy(const container_type &q, const container_type &p, const f_type &F);
+template <size_t N, size_t K>
+double energy(const container_type<N, K> &q, const container_type<N, K> &p, const f_type<N> &F);
 
+template <size_t N, size_t K>
 struct streaming_observer_energy
 {
   std::ostream &m_out;
-  const f_type &m_F;
+  const f_type<N> &m_F;
 
-  streaming_observer_energy(std::ostream &out, const f_type &F) : m_out(out), m_F(F) {}
+  streaming_observer_energy(std::ostream &out, const f_type<N> &F) : m_out(out), m_F(F) {}
 
   template <class State>
   void operator()(const State &s, double t) const
   {
-    container_type q = s.first;
-    container_type p = s.second;
+    container_type<N, K> q = s.first;
+    container_type<N, K> p = s.second;
     m_out << t << " " << energy(q, p, m_F);
     m_out << "\n";
   }
 };
 
+template <size_t N, size_t K>
 struct streaming_observer_radius
 {
   std::ostream &m_out;
@@ -114,23 +124,29 @@ struct streaming_observer_radius
   template <class State>
   void operator()(const State &s, double t) const
   {
-    container_type q = s.first;
+    container_type<N, K> q = s.first;
     m_out << t << " " << radius(q);
     m_out << "\n";
   }
 };
 
+template <size_t N>
 boost::array<double, N * N - 1> randomState();
 
-std::pair<container_type, container_type> randomStateFixedEnergy(const double, const f_type);
+template <size_t N, size_t K>
+std::pair<container_type<N, K>, container_type<N, K>> randomStateFixedEnergy(const double, const f_type<N>);
 
-std::pair<container_type, container_type> loadState(std::string);
+template <size_t N, size_t K>
+std::pair<container_type<N, K>, container_type<N, K>> loadState(std::string);
 
-void saveState(std::pair<container_type, container_type>, std::string);
+template <size_t N, size_t K>
+void saveState(std::pair<container_type<N, K>, container_type<N, K>>, std::string);
 
-std::pair<container_type, container_type> perturbRandomly(std::pair<container_type, container_type>, double, const f_type);
+template <size_t N, size_t K>
+std::pair<container_type<N, K>, container_type<N, K>> perturbRandomly(std::pair<container_type<N, K>, container_type<N, K>>, double, const f_type<N>);
 
-std::pair<container_type, container_type> rSFEI(const double, const f_type);
+template <size_t N, size_t K>
+std::pair<container_type<N, K>, container_type<N, K>> rSFEI(const double, const f_type<N>);
 
 std::string randomName();
 
