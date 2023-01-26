@@ -12,27 +12,28 @@ int main(int argc, char **argv)
 
   const size_t N = 2;
   const size_t K = 2;
-  if (argc == 3)
-  {
-    try
-    {
-      N = argv[1];
-      K = argc[2];
-      if (N < 2 || K < 2)
-      {
-        cerr << "N, K must be >= 2" << endl;
-        return (EXIT_FAILURE);
-      }
-    }
-    catch (invalid_argument &e)
-    {
-      cerr << "Invalid (N, K)" << endl;
-      return (EXIT_FAILURE);
-    }
-  } else {
-    cerr << "Specify (N, K)" << endl;
-    return (EXIT_FAILURE);
-  }
+
+  // const size_t N = 2;
+  // const size_t K = 2;
+  // if (argc == 3)
+  // {
+  //   try
+  //   {
+  //     if (N < 2 || K < 2)
+  //     {
+  //       cerr << "N, K must be >= 2" << endl;
+  //       return (EXIT_FAILURE);
+  //     }
+  //   }
+  //   catch (invalid_argument &e)
+  //   {
+  //     cerr << "Invalid (N, K)" << endl;
+  //     return (EXIT_FAILURE);
+  //   }
+  // } else {
+  //   cerr << "Specify (N, K)" << endl;
+  //   return (EXIT_FAILURE);
+  // }
 
   const string f_file = "./external/F/N" + to_string(N) + ".dat";
   const f_type<N> masterF(f_file);
@@ -67,13 +68,13 @@ int main(int argc, char **argv)
 
   outfile.open(outdir + "/" + filename + ".dat");
 
-  auto state0 = loadState("./runs/States/" + pickedState + ".dat");
-  auto state = perturbRandomly(state0, pow(10, -6), masterF);
+  auto state0 = loadState<N, K>("./runs/States/" + pickedState + ".dat");
+  auto state = perturbRandomly<N, K>(state0, pow(10, -6), masterF);
 
-  container_type q = state.first;
-  container_type p = state.second;
+  container_type<N, K> q = state.first;
+  container_type<N, K> p = state.second;
 
-  typedef symplectic_rkn_sb3a_mclachlan<container_type> stepper_type;
+  typedef symplectic_rkn_sb3a_mclachlan<container_type<N, K>> stepper_type;
 
   const double start_time = 0.0;
   const double end_time = 1000.0;
@@ -81,12 +82,12 @@ int main(int argc, char **argv)
 
   integrate_const(
       stepper_type(),
-      make_pair(bfss_coor(), bfss_momentum(masterF)),
+      make_pair(bfss_coor<N, K>(), bfss_momentum<N, K>(masterF)),
       make_pair(boost::ref(q), boost::ref(p)),
       start_time,
       end_time,
       dt,
-      streaming_observer_elements_with_momenta(outfile));
+      streaming_observer_elements_with_momenta<N, K>(outfile));
 
   return (EXIT_SUCCESS);
 }
