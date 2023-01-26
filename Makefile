@@ -7,7 +7,7 @@ SDIR = src
 INC = -Iinclude
 LIB = -Llib
 LIBMAT = -lmatrices
-CFLAGS = -Wall
+CFLAGS = -Wall -std=c++20
 RUNS = runs
 
 _OBJS = matrices/Matrices.o
@@ -21,7 +21,7 @@ $(OUT): $(OBJS)
 
 %.prog: $(SDIR)/%.cpp
 	mkdir -p $(BIN)
-	$(CC) -o $(patsubst %.prog, $(BIN)/%, $@) $< $(INC) $(LIB) $(LIBMAT) $(CFLAGS)
+	$(CC) -o $(patsubst %.prog, $(BIN)/%, $@) $< $(INC) $(CFLAGS)
 
 all:
 	mkdir -p ./$(ODIR)/matrices
@@ -31,7 +31,7 @@ all:
 .PHONY: clean
 
 clean:
-	rm -rf $(ODIR)/*.o $(BIN)/*
+	rm -rf $(ODIR)/matrices/*.o $(BIN)/*
 
 cleanruns:
 	rm -rf $(RUNS)/*

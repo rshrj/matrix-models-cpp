@@ -86,7 +86,7 @@ std::pair<container_type<N, K>, container_type<N, K>> loadState(std::string stat
       fin >> tempStr;
       tempArr[i] = stod(tempStr);
     }
-    q[k] = matrix_type(tempArr);
+    q[k] = matrix_type<N>(tempArr);
   }
 
   for (size_t k = 0; k < K; ++k)
@@ -97,7 +97,7 @@ std::pair<container_type<N, K>, container_type<N, K>> loadState(std::string stat
       fin >> tempStr;
       tempArr[i] = stod(tempStr);
     }
-    p[k] = matrix_type(tempArr);
+    p[k] = matrix_type<N>(tempArr);
   }
 
   // for (size_t k = 0; k < K; ++k)
@@ -143,7 +143,7 @@ std::pair<container_type<N, K>, container_type<N, K>> perturbRandomly(std::pair<
 
   for (size_t k = 0; k < K; ++k)
   {
-    q[k] += epsilon * matrix_type(randomState<N>());
+    q[k] += epsilon * matrix_type<N>(randomState<N>());
   }
 
   double eRatio = 1.0 / energy(q, p, F);
@@ -196,4 +196,3 @@ std::string randomName()
 
   return std::to_string(dist(gen));
 }
-

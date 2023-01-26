@@ -150,4 +150,6 @@ std::pair<container_type<N, K>, container_type<N, K>> rSFEI(const double, const 
 
 std::string randomName();
 
+#include "Matrices_Impl.hpp"
+
 #endif //MATRIX_HPP_INCLUDED

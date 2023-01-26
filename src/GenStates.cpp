@@ -20,7 +20,9 @@ int main(int argc, char **argv)
 
   auto state = randomStateFixedEnergy<N, K>(1.0, masterF);
 
-  saveState<N, K>(state, "./runs/States/" + filename + ".dat");
+  string outdir = "./runs/States/N" + to_string(N) + "K" + to_string(K) + "/";
+  filesystem::create_directories(outdir);
+  saveState<N, K>(state, outdir + filename + ".dat");
 
   return (EXIT_SUCCESS);
 }
