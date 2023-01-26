@@ -50,7 +50,7 @@ std::pair<container_type<N, K>, container_type<N, K>> randomStateFixedEnergy(con
   container_type<N, K> q;
   for (size_t k = 0; k < K; ++k)
   {
-    q[k] = randomState();
+    q[k] = randomState<N>();
   }
 
   container_type<N, K> p;
@@ -143,7 +143,7 @@ std::pair<container_type<N, K>, container_type<N, K>> perturbRandomly(std::pair<
 
   for (size_t k = 0; k < K; ++k)
   {
-    q[k] += epsilon * matrix_type(randomState());
+    q[k] += epsilon * matrix_type(randomState<N>());
   }
 
   double eRatio = 1.0 / energy(q, p, F);
@@ -163,13 +163,13 @@ std::pair<container_type<N, K>, container_type<N, K>> rSFEI(const double E, cons
   container_type<N, K> q;
   for (size_t k = 0; k < K; ++k)
   {
-    q[k] = randomState();
+    q[k] = randomState<N>();
   }
 
   container_type<N, K> p;
   for (size_t k = 0; k < K; ++k)
   {
-    p[k] = randomState();
+    p[k] = randomState<N>();
   }
 
   double eRatio = E / energy(q, p, F);
