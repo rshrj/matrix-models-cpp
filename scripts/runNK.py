@@ -3,7 +3,7 @@
 import os
 
 def main():
-    Nmax, Kmax = 2, 2
+    Nmax, Kmax = 10, 10
 
     for N in range(2, Nmax + 1):
         for K in range(2, Kmax + 1):
