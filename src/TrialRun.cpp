@@ -44,7 +44,7 @@ int main(int argc, char **argv)
     try
     {
       pickedState = argv[1];
-      if (!filesystem::exists("./runs/States/" + pickedState + ".dat"))
+      if (!filesystem::exists("./runs/States/N" + to_string(N) + "K" + to_string(K) + "/" + pickedState))
       {
         cerr << "Invalid file" << endl;
         return (EXIT_FAILURE);
@@ -61,15 +61,13 @@ int main(int argc, char **argv)
   }
 
   ofstream outfile;
-  string filename = randomName();
 
-  string outdir = "./runs/Trials/" + pickedState;
+  string outdir = "./runs/Trials/N" + to_string(N) + "K" + to_string(K) + "/";
   filesystem::create_directories(outdir);
 
-  outfile.open(outdir + "/" + filename + ".dat");
+  outfile.open(outdir + pickedState);
 
-  auto state0 = loadState<N, K>("./runs/States/" + pickedState + ".dat");
-  auto state = perturbRandomly<N, K>(state0, pow(10, -6), masterF);
+  auto state = loadState<N, K>("./runs/States/N" + to_string(N) + "K" + to_string(K) + "/" + pickedState);
 
   container_type<N, K> q = state.first;
   container_type<N, K> p = state.second;

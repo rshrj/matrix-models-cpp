@@ -3,23 +3,24 @@
 import os
 
 def main():
-    Nmax, Kmax = 10, 10
-    NumStates = 15
+    Nmax, Kmax = 2, 2
 
     for N in range(2, Nmax + 1):
         for K in range(2, Kmax + 1):
             print(f'N = {N}, K = {K}:')
 
-            with open('./src/GenStates.cpp', 'r') as file :
+            with open('./src/TrialRun.cpp', 'r') as file :
                 filedata = file.read()
 
             filedata = filedata.replace('N = 2', f'N = {N}')
             filedata = filedata.replace('K = 2', f'K = {K}')
 
-            with open(f'./src/GenStates-Corrected-N{N}K{K}.cpp', 'w') as file:
+            with open(f'./src/TrialRun-Corrected-N{N}K{K}.cpp', 'w') as file:
                 file.write(filedata)
 
-            runcmd = f'(g++ -o ./bin/GenStates-N{N}K{K} ./src/GenStates-Corrected-N{N}K{K}.cpp -Iinclude -Wall && ' + " && ".join([f"./bin/GenStates-N{N}K{K}" for x in range(NumStates)])
+            states = os.listdir(f"runs/States/N{N}K{K}")
+
+            runcmd = f"(g++ -o ./bin/TrialRun-N{N}K{K} ./src/TrialRun-Corrected-N{N}K{K}.cpp -Iinclude -Wall && " + " && ".join([f"./bin/TrialRun-N{N}K{K} " + x for x in states]) + ") &"
 
             print(runcmd)
 
