@@ -18,7 +18,7 @@ def main():
             with open(f'./src/TrialRun-Corrected-N{N}K{K}.cpp', 'w') as file:
                 file.write(filedata)
 
-            states = os.listdir(f"runs/States/N{N}K{K}")
+            states = os.listdir(f"./runs/States/N{N}K{K}")
 
             runcmd = f"(g++ -o ./bin/TrialRun-N{N}K{K} ./src/TrialRun-Corrected-N{N}K{K}.cpp -Iinclude -Wall && " + " && ".join([f"./bin/TrialRun-N{N}K{K} " + x for x in states]) + ") &"
 
