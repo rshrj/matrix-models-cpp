@@ -1,0 +1,287 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12152,        279]
+NotebookOptionsPosition[     11531,        262]
+NotebookOutlinePosition[     11922,        278]
+CellTagsIndexPosition[     11879,        275]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]], "Input",
+ CellLabel->"In[1]:=",ExpressionUUID->"8ed570de-c428-4a9d-b1ad-a31bc72e005e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"LaunchKernels", "[", "]"}], ";"}]], "Input",ExpressionUUID->"a71f0023-1045-42de-9456-a6b3d6debc42"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Get", "[", "\"\<../lib/lib2.m\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Get", "[", "\"\<../lib/util.m\>\"", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.883830612997117*^9, 
+  3.883830626892627*^9}},ExpressionUUID->"8dc0ebed-df53-45ca-b831-\
+139aded3ee49"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ParallelDo", "[", 
+   RowBox[{
+    RowBox[{"(", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"files", " ", "=", " ", 
+       RowBox[{"FileNames", "[", 
+        RowBox[{"All", ",", " ", 
+         RowBox[{"\"\<../../runs/Trials/N\>\"", "<>", 
+          RowBox[{"ToString", "[", "$N", "]"}], "<>", "\"\<K\>\"", "<>", 
+          RowBox[{"ToString", "[", "$K", "]"}]}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"changeNK", "[", 
+       RowBox[{"$N", ",", " ", "$K"}], "]"}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<N = \>\"", "<>", 
+           RowBox[{"ToString", "@", "$N"}], "<>", "\"\<, K = \>\"", "<>", 
+           RowBox[{"ToString", "@", "$K"}], "<>", "\"\<: Working on \>\"", "<>", 
+           RowBox[{"FileBaseName", "@", 
+            RowBox[{"files", "[", 
+             RowBox[{"[", "k", "]"}], "]"}]}]}], "]"}], ";", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"radTab", " ", "=", " ", 
+          RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"trX2Tab", " ", "=", " ", 
+          RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"trX3Tab", " ", "=", " ", 
+          RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"trX4Tab", " ", "=", " ", 
+          RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"str", " ", "=", " ", 
+          RowBox[{"OpenRead", "[", 
+           RowBox[{"files", "[", 
+            RowBox[{"[", "k", "]"}], "]"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Do", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"line", " ", "=", " ", 
+             RowBox[{"ReadLine", "[", "str", "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"line", " ", "===", " ", "EndOfFile"}], ",", " ", 
+              RowBox[{"Continue", "[", "]"}]}], "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Mod", "[", 
+                RowBox[{"k", ",", " ", "500"}], "]"}], "==", "0"}], ",", " ", 
+              
+              RowBox[{"Print", "[", 
+               RowBox[{"\"\<t = \>\"", "<>", 
+                RowBox[{"ToString", "[", 
+                 FractionBox["k", "10"], "]"}]}], "]"}]}], "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"tqp", " ", "=", " ", 
+             RowBox[{"First", "@", 
+              RowBox[{"ImportString", "[", 
+               RowBox[{"line", ",", " ", "\"\<Table\>\""}], "]"}]}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"tmat", " ", "=", " ", 
+             RowBox[{"First", "@", 
+              RowBox[{"cMat", "[", 
+               RowBox[{"{", "tqp", "}"}], "]"}]}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"AppendTo", "[", 
+             RowBox[{"radTab", ",", " ", 
+              RowBox[{"radius", "[", "tqp", "]"}]}], "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"AppendTo", "[", 
+             RowBox[{"trX2Tab", ",", " ", 
+              RowBox[{"TrX2", "[", "tmat", "]"}]}], "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"AppendTo", "[", 
+             RowBox[{"trX3Tab", ",", " ", 
+              RowBox[{"TrX3", "[", "tmat", "]"}]}], "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"AppendTo", "[", 
+             RowBox[{"trX4Tab", ",", " ", 
+              RowBox[{"TrX4", "[", "tmat", "]"}]}], "]"}], ";"}], 
+           "\[IndentingNewLine]", ",", " ", 
+           RowBox[{"{", 
+            RowBox[{"k", ",", " ", "1", ",", " ", "10000"}], "}"}]}], "]"}], 
+         ";", "\[IndentingNewLine]", 
+         RowBox[{"Close", "[", "str", "]"}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", "\"\<Computing stats and exporting\>\"", "]"}],
+          ";", "\[IndentingNewLine]", 
+         RowBox[{"stats", " ", "=", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"FileBaseName", "[", 
+             RowBox[{"files", "[", 
+              RowBox[{"[", "k", "]"}], "]"}], "]"}], ",", 
+            RowBox[{"Mean", "[", 
+             RowBox[{"radTab", "[", 
+              RowBox[{"[", 
+               RowBox[{"All", ",", " ", "2"}], "]"}], "]"}], "]"}], ",", " ", 
+            
+            RowBox[{"StandardDeviation", "[", 
+             RowBox[{"radTab", "[", 
+              RowBox[{"[", 
+               RowBox[{"All", ",", " ", "2"}], "]"}], "]"}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Mean", "[", 
+             RowBox[{
+              RowBox[{"trX2Tab", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", " ", "2"}], "]"}], "]"}], "[", 
+              RowBox[{"[", 
+               RowBox[{"All", ",", " ", "1", ",", " ", "2"}], "]"}], "]"}], 
+             "]"}], ",", " ", 
+            RowBox[{"StandardDeviation", "[", 
+             RowBox[{
+              RowBox[{"trX2Tab", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", " ", "2"}], "]"}], "]"}], "[", 
+              RowBox[{"[", 
+               RowBox[{"All", ",", " ", "1", ",", " ", "2"}], "]"}], "]"}], 
+             "]"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"$K", ">=", "3"}], ",", " ", 
+              RowBox[{"Mean", "[", 
+               RowBox[{
+                RowBox[{"trX3Tab", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", " ", "2"}], "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", " ", "1", ",", " ", "2", ",", " ", "3"}],
+                  "]"}], "]"}], "]"}], ",", " ", 
+              RowBox[{"Mean", "[", 
+               RowBox[{
+                RowBox[{"trX3Tab", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", " ", "2"}], "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", " ", "1", ",", " ", "2", ",", " ", "1"}],
+                  "]"}], "]"}], "]"}]}], "]"}], ",", " ", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"$K", ">=", "3"}], ",", " ", 
+              RowBox[{"StandardDeviation", "[", 
+               RowBox[{
+                RowBox[{"trX3Tab", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", " ", "2"}], "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", " ", "1", ",", " ", "2", ",", " ", "3"}],
+                  "]"}], "]"}], "]"}], ",", " ", 
+              RowBox[{"StandardDeviation", "[", 
+               RowBox[{
+                RowBox[{"trX3Tab", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", " ", "2"}], "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", " ", "1", ",", " ", "2", ",", " ", "1"}],
+                  "]"}], "]"}], "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"Mean", "[", 
+             RowBox[{"trX4Tab", "[", 
+              RowBox[{"[", 
+               RowBox[{"All", ",", " ", "2"}], "]"}], "]"}], "]"}], ",", " ", 
+            
+            RowBox[{"StandardDeviation", "[", 
+             RowBox[{"trX4Tab", "[", 
+              RowBox[{"[", 
+               RowBox[{"All", ",", " ", "2"}], "]"}], "]"}], "]"}]}], "}"}]}],
+          ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"statFile", " ", "=", " ", 
+          RowBox[{"OpenAppend", "[", 
+           RowBox[{"\"\<../../runs/Stats/N\>\"", "<>", 
+            RowBox[{"ToString", "[", "$N", "]"}], "<>", "\"\<K\>\"", "<>", 
+            RowBox[{"ToString", "[", "$K", "]"}], "<>", "\"\<.dat\>\""}], 
+           "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"WriteString", "[", 
+          RowBox[{"statFile", ",", " ", 
+           RowBox[{
+            RowBox[{"StringRiffle", "[", 
+             RowBox[{
+              RowBox[{"ToString", "/@", "stats"}], ",", " ", "\"\<    \>\""}],
+              "]"}], "<>", "\"\<\\n\>\""}]}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Close", "[", "statFile", "]"}], ";"}], 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", " ", "1", ",", " ", 
+          RowBox[{"Length", "[", "files", "]"}]}], "}"}]}], "]"}], ";"}], 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", ")"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"$N", ",", " ", "2", ",", " ", "9"}], "}"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"$K", ",", " ", "2", ",", " ", "10"}], "}"}]}], "]"}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.883827556624461*^9, 3.883827798182074*^9}, {
+   3.883827850883312*^9, 3.883827860677965*^9}, {3.883827901766942*^9, 
+   3.8838279019953823`*^9}, {3.88382795616247*^9, 3.883827958336492*^9}, {
+   3.883828054866856*^9, 3.883828160252668*^9}, {3.883828318579769*^9, 
+   3.883828348029845*^9}, {3.883828379453025*^9, 3.883828383485641*^9}, {
+   3.883828444210079*^9, 3.8838284570069933`*^9}, {3.88382853279226*^9, 
+   3.883828559086177*^9}, {3.883828603396873*^9, 3.8838287047894697`*^9}, {
+   3.883828748273682*^9, 3.883828753907453*^9}, {3.883828788255183*^9, 
+   3.8838287895418577`*^9}, 3.883828825616597*^9, {3.8838289102242317`*^9, 
+   3.8838290590054617`*^9}, {3.88382913504312*^9, 3.883829257414837*^9}, {
+   3.883829404860551*^9, 3.8838295085252028`*^9}, {3.88382958743923*^9, 
+   3.8838296244230623`*^9}, {3.8838297195956593`*^9, 
+   3.8838297814643297`*^9}, {3.883829814341565*^9, 3.8838298257737017`*^9}, {
+   3.883829871501771*^9, 3.8838298903444777`*^9}, {3.883830202281249*^9, 
+   3.8838302047386723`*^9}, {3.883830258525999*^9, 3.883830264505682*^9}, 
+   3.883830300996614*^9, {3.8838304351293573`*^9, 3.883830483562896*^9}, 
+   3.883830517508463*^9, {3.8838305648900747`*^9, 3.883830609187242*^9}, {
+   3.883830654146594*^9, 3.8838307111156197`*^9}, {3.8838307435480556`*^9, 
+   3.883830866926112*^9}},ExpressionUUID->"f3904c22-353f-4f59-bd05-\
+1d46f18ccb3a"]
+},
+WindowSize->{717, 774},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"13.2 for Linux x86 (64-bit) (December 7, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"e2336384-320c-450b-8990-f673b9119251"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 201, 4, 29, "Input",ExpressionUUID->"8ed570de-c428-4a9d-b1ad-a31bc72e005e"],
+Cell[762, 26, 134, 2, 29, "Input",ExpressionUUID->"a71f0023-1045-42de-9456-a6b3d6debc42"],
+Cell[899, 30, 320, 8, 51, "Input",ExpressionUUID->"8dc0ebed-df53-45ca-b831-139aded3ee49"],
+Cell[1222, 40, 10305, 220, 1124, "Input",ExpressionUUID->"f3904c22-353f-4f59-bd05-1d46f18ccb3a"]
+}
+]
+*)
+

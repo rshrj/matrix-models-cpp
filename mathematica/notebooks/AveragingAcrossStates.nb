@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     19325,        452]
-NotebookOptionsPosition[     18607,        434]
-NotebookOutlinePosition[     19001,        450]
-CellTagsIndexPosition[     18958,        447]
+NotebookDataLength[     19620,        459]
+NotebookOptionsPosition[     18905,        441]
+NotebookOutlinePosition[     19296,        457]
+CellTagsIndexPosition[     19253,        454]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -114,11 +114,13 @@ Cell[BoxData[
                  RowBox[{"Length", "[", "pertStates", "]"}]}], "}"}]}], "]"}],
               ",", " ", 
              RowBox[{"ProgressIndicator", "[", 
-              FractionBox[
-               RowBox[{"k", "-", "1"}], 
-               RowBox[{
-                RowBox[{"Length", "[", "pertStates", "]"}], "-", "1"}]], 
-              "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"k", "-", "1"}], ")"}], "/", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"Length", "[", "pertStates", "]"}], "-", "1"}], 
+                ")"}]}], "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
           "\[IndentingNewLine]", 
           RowBox[{"msg", " ", "=", " ", "\"\<Computing mean size\>\""}], ";", 
           "\[IndentingNewLine]", 
@@ -162,10 +164,11 @@ Cell[BoxData[
                     RowBox[{"[", 
                     RowBox[{"A", ",", " ", "k", ",", " ", 
                     RowBox[{"2", ";;", 
-                    FractionBox[
+                    RowBox[{
+                    FractionBox["1", "2"], 
                     RowBox[{"(", 
-                    RowBox[{"steps", "-", "1"}], ")"}], "2"]}]}], "]"}], 
-                    "]"}], ",", " ", 
+                    RowBox[{"steps", "-", "1"}], ")"}]}]}]}], "]"}], "]"}], 
+                    ",", " ", 
                     RowBox[{"{", 
                     RowBox[{"A", ",", " ", "1", ",", " ", "m"}], "}"}]}], 
                     "]"}]}], ",", " ", 
@@ -173,10 +176,12 @@ Cell[BoxData[
                     RowBox[{"k", ",", " ", "1", ",", " ", "tSteps"}], "}"}]}],
                     "]"}], ",", " ", 
                   RowBox[{"ProgressIndicator", "[", 
-                   FractionBox[
-                    RowBox[{"k", "-", "1"}], 
-                    RowBox[{"tSteps", "-", "1"}]], "]"}]}], "]"}]}], ";", 
-               "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                   RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"k", "-", "1"}], ")"}], "/", 
+                    RowBox[{"(", 
+                    RowBox[{"tSteps", "-", "1"}], ")"}]}], "]"}]}], "]"}]}], 
+               ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
                RowBox[{"Monitor", "[", 
                 RowBox[{
                  RowBox[{"Table", "[", 
@@ -202,10 +207,11 @@ Cell[BoxData[
                     RowBox[{"[", 
                     RowBox[{"A", ",", " ", "k", ",", " ", 
                     RowBox[{"2", ";;", 
-                    FractionBox[
+                    RowBox[{
+                    FractionBox["1", "2"], 
                     RowBox[{"(", 
-                    RowBox[{"steps", "-", "1"}], ")"}], "2"]}]}], "]"}], 
-                    "]"}], "-", 
+                    RowBox[{"steps", "-", "1"}], ")"}]}]}]}], "]"}], "]"}], 
+                    "-", 
                     RowBox[{"xav", "[", 
                     RowBox[{"[", "k", "]"}], "]"}]}], ")"}]}], ")"}]}]}], ",",
                      " ", 
@@ -216,9 +222,11 @@ Cell[BoxData[
                     RowBox[{"k", ",", " ", "1", ",", " ", "tSteps"}], "}"}]}],
                    "]"}], ",", " ", 
                  RowBox[{"ProgressIndicator", "[", 
-                  FractionBox[
-                   RowBox[{"k", "-", "1"}], 
-                   RowBox[{"tSteps", "-", "1"}]], "]"}]}], "]"}]}], 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"k", "-", "1"}], ")"}], "/", 
+                   RowBox[{"(", 
+                    RowBox[{"tSteps", "-", "1"}], ")"}]}], "]"}]}], "]"}]}], 
               "\[IndentingNewLine]", ")"}]}], "]"}]}], ";", 
           "\[IndentingNewLine]", "\[IndentingNewLine]", 
           RowBox[{"msg", " ", "=", " ", "\"\<Computing characteristics\>\""}],
@@ -348,8 +356,7 @@ Cell[BoxData[
                  RowBox[{"{", 
                   RowBox[{"Text", "[", 
                    RowBox[{
-                    RowBox[{
-                    "\"\<\!\(\*SubscriptBox[\(t\), \(S\)]\) = \>\"", "<>", 
+                    RowBox[{"\"\<\!\(\*SubscriptBox[\(t\), \(S\)]\) = \>\"", "<>", 
                     RowBox[{"ToString", "@", 
                     RowBox[{"res", "[", 
                     RowBox[{"[", "1", "]"}], "]"}]}], "<>", 
@@ -432,9 +439,9 @@ Cell[BoxData[
   3.8813133765592937`*^9}},ExpressionUUID->"a3abcfd3-a077-480e-8af8-\
 c826856c6ccd"]
 },
-WindowSize->{1437, 774},
-WindowMargins->{{1.5, Automatic}, {Automatic, 16.5}},
-FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
+WindowSize->{717, 774},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.2 for Linux x86 (64-bit) (December 7, 2022)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"76be0a38-1962-4a8c-a852-5c533bc3a18f"
 ]
@@ -451,9 +458,9 @@ CellTagsIndex->{}
 Notebook[{
 Cell[558, 20, 176, 2, 29, "Input",ExpressionUUID->"4eb79c73-5625-4e4e-8be2-c9c956df6c22"],
 Cell[737, 24, 369, 8, 51, "Input",ExpressionUUID->"32a98aaa-59c9-45dd-9371-3770ae8170f1"],
-Cell[1109, 34, 845, 23, 56, "Input",ExpressionUUID->"b6735179-7866-4c0b-82f2-2f2f60170e87"],
+Cell[1109, 34, 845, 23, 33, "Input",ExpressionUUID->"b6735179-7866-4c0b-82f2-2f2f60170e87"],
 Cell[1957, 59, 382, 9, 33, "Input",ExpressionUUID->"4d780767-a529-4657-acd8-f1fc4f7bd56b"],
-Cell[2342, 70, 16261, 362, 1453, "Input",ExpressionUUID->"a3abcfd3-a077-480e-8af8-c826856c6ccd"]
+Cell[2342, 70, 16559, 369, 1741, "Input",ExpressionUUID->"a3abcfd3-a077-480e-8af8-c826856c6ccd"]
 }
 ]
 *)
