@@ -1,6 +1,7 @@
 bin/
 obj/
 runs/
+cache/
 
 mathematica/plots/
 mathematica/stats*
