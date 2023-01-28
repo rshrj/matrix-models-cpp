@@ -1,6 +1,12 @@
 #!/usr/bin/env wolframscript
 (* ::Package:: *)
 
+Quit
+
+
+SetDirectory[NotebookDirectory[]];
+
+
 Get["../lib/lib2.m"];
 Get["../lib/util.m"];
 
