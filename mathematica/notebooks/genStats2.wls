@@ -1,12 +1,10 @@
 #!/usr/bin/env wolframscript
 (* ::Package:: *)
 
-LaunchKernels[];
-
 Get["../lib/lib2.m"];
 Get["../lib/util.m"];
 
-ParallelDo[(
+Do[(
 files = FileNames[All, "../../runs/Trials/N"<>ToString[$N]<>"K"<>ToString[$K]];
 
 changeNK[$N, $K];
@@ -19,6 +17,7 @@ trX2Tab = {};
 trX3Tab = {};
 trX4Tab = {};
 
+(* 
 str = OpenRead[files[[k]]];
 Do[
 line = ReadLine[str];
@@ -32,6 +31,19 @@ AppendTo[trX3Tab, TrX3[tmat]];
 AppendTo[trX4Tab, TrX4[tmat]];
 , {k, 1, 10000}];
 Close[str];
+*)
+
+Print[files[[k]]];
+Print["Importing data"]
+data2 = Import[files[[k]], "Table"];
+Print[data2];
+
+Print["Computing observables"]
+radTab = radius /@ data2;
+matdata = cMat[data2];
+trX2Tab = TrX2 /@ matdata;
+trX3Tab = TrX3 /@ matdata;
+trX4Tab = TrX4 /@ matdata;
 
 Print["Computing stats and exporting"];
 stats = {FileBaseName[files[[k]]],Mean[radTab[[All, 2]]], StandardDeviation[radTab[[All, 2]]],
