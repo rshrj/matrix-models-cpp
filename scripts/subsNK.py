@@ -14,6 +14,10 @@ def main():
     Nmax, Kmax = 9, 10
     NumStates = 10
 
+    runcmd = f'make clean'
+    print(runcmd)
+    os.system(runcmd)
+
     for N in range(2, Nmax + 1):
         for K in range(2, Kmax + 1):
             print(f'N = {N}, K = {K}:')
