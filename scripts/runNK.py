@@ -1,9 +1,21 @@
 #!/usr/bin/env python3
 
 import os
+import time
+
+def notAvail(Nmax, Kmax):
+    for N in range(2, Nmax + 1):
+        for K in range(2, Kmax + 1):
+            if not os.path.exists(f'./bin/TrialRun-N{N}K{K}'):
+                return True
+    return False
 
 def main():
-    Nmax, Kmax = 3, 4
+    Nmax, Kmax = 9, 10
+
+    runcmd = f'make clean'
+    print(runcmd)
+    os.system(runcmd)
 
     for N in range(2, Nmax + 1):
         for K in range(2, Kmax + 1):
@@ -18,13 +30,23 @@ def main():
             with open(f'./cache/TrialRun-Corrected-N{N}K{K}.cpp', 'w') as file:
                 file.write(filedata)
 
+            runcmd = f'g++ -o ./bin/TrialRun-N{N}K{K} ./cache/TrialRun-Corrected-N{N}K{K}.cpp -Iinclude -Wall &'
+            print(runcmd)
+            os.system(runcmd)
+
+    while (notAvail(Nmax, Kmax)):
+        time.sleep(1)
+
+    for N in range(2, Nmax + 1):
+        for K in range(2, Kmax + 1):
+            print(f'N = {N}, K = {K}:')
+
             states = os.listdir(f"./runs/States/N{N}K{K}")
 
-            runcmd = f"(g++ -o ./bin/TrialRun-N{N}K{K} ./cache/TrialRun-Corrected-N{N}K{K}.cpp -Iinclude -Wall && " + " && ".join([f"./bin/TrialRun-N{N}K{K} " + x for x in states]) + ") &"
-
-            print(runcmd)
-
-            os.system(runcmd)
+            for x in states:
+                runcmd = f"./bin/TrialRun-N{N}K{K} " + x + " &"
+                print(runcmd)
+                os.system(runcmd)
                 
     
 
