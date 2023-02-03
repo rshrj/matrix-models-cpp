@@ -3,7 +3,7 @@
 import os
 
 def main():
-    N, K = 3, 5
+    N, K = 5, 5
 
     print(f'N = {N}, K = {K}:')
 
