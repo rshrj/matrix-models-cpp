@@ -4,6 +4,7 @@ OUT = lib/libmatrices.a
 CC = g++
 ODIR = obj
 SDIR = src
+CDIR = cache
 INC = -Iinclude
 LIB = -Llib
 LIBMAT = -lmatrices
@@ -31,7 +32,7 @@ all:
 .PHONY: clean
 
 clean:
-	rm -rf $(ODIR)/matrices/*.o $(BIN)/*
+	rm -rf $(ODIR)/matrices/*.o $(BIN)/* $(CDIR)/*
 
 cleanruns:
 	rm -rf $(RUNS)/*

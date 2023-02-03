@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
 
 import os
+import time
+
+def notAvail(Nmax, Kmax):
+    for N in range(2, Nmax + 1):
+        for K in range(2, Kmax + 1):
+            if not os.path.exists(f'./bin/GenStates-N{N}K{K}'):
+                return True
+    return False
 
 def main():
-    Nmax, Kmax = 3, 4
-    NumStates = 2
+    Nmax, Kmax = 9, 10
+    NumStates = 10
 
     for N in range(2, Nmax + 1):
         for K in range(2, Kmax + 1):
@@ -19,11 +27,25 @@ def main():
             with open(f'./cache/GenStates-Corrected-N{N}K{K}.cpp', 'w') as file:
                 file.write(filedata)
 
-            runcmd = f'(g++ -o ./bin/GenStates-N{N}K{K} ./cache/GenStates-Corrected-N{N}K{K}.cpp -Iinclude -Wall && ' + " && ".join([f"./bin/GenStates-N{N}K{K}" for x in range(NumStates)]) + ") &"
+            runcmd = f'g++ -o ./bin/GenStates-N{N}K{K} ./cache/GenStates-Corrected-N{N}K{K}.cpp -Iinclude -Wall &'
 
             print(runcmd)
 
             os.system(runcmd)
+
+    while (notAvail(Nmax, Kmax)):
+        time.sleep(1)
+
+    for N in range(2, Nmax + 1):
+        for K in range(2, Kmax + 1):
+            print(f'N = {N}, K = {K}:')
+
+            runcmd = f'./bin/GenStates-N{N}K{K} &'
+
+            print(f'{NumStates} x {runcmd}')
+
+            for _ in range(NumStates):
+                os.system(runcmd)
                 
     
 
