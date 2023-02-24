@@ -11,7 +11,11 @@ If[AnyTrue[Head/@data[[Length[data]-i+1]], #===String&], Return[True, Module];Br
 Return[False, Module];
 )];
 
-$K = 3;
+$K = 9;
+$Nmin = 2;
+$Nmax = 9;
+$tStart = 100;
+$statsDir = "../../runs/Stats-101";
 
 SymTr[line_] := Module[{t, x}, (
 Do[
@@ -21,19 +25,22 @@ x[i] = line[[2+(i-1)($N^2-1);; 1+i($N^2-1)]];
 {t, Table[x[i] . x[j] - KroneckerDelta[i, j]/$K Sum[x[k] . x[k], {k, 1, $K}], {i, 1, $K}, {j, 1, $K}]}
 )];
 
-computeStats[data_] := Module[{rad, symTr, fns}, (
+computeStats[data_] := Module[{rad, symTr, fns, t0}, (
 rad = radius/@data;
 symTr = SymTr/@data;
 
 fns = {Mean, StandardDeviation};
 
-Join[{#[rad[[All, 2]]]&/@fns},
-Flatten[#, 1]&@Table[#[symTr[[All, 2]][[i, j]]]&/@fns, {i, 1, $K-1}, {j, i, $K}]]
+t0 = Round[$tStart*10 + 1];
+
+Join[{#[rad[[t0;;, 2]]]&/@fns},
+Flatten[#, 1]&@Table[#[symTr[[t0;;, 2]][[i, j]]]&/@fns, {i, 1, $K-1}, {j, i, $K}]]
 )];
 
-If[!DirectoryQ["../../runs/Stats-New"], CreateDirectory["../../runs/Stats-New"]];
 
-Do[Module[{$dirname, $files, $data, $stats, $out, statFile}, (
+If[!DirectoryQ[$statsDir], CreateDirectory[$statsDir]];
+
+Do[Module[{$dirname, $files, $data, $stats, $out, $statFile}, (
 Print["N = "<>ToString@$N<>", K = "<>ToString@$K];
 changeNK[$N, $K];
 $dirname = "../../runs/Trials/N"<>ToString@$N<>"K"<>ToString@$K;
@@ -48,8 +55,8 @@ $stats = computeStats[$data];
 
 $out = Join[{$files[[k]]}, Flatten@$stats];
 
-statFile = OpenAppend["../../runs/Stats-New/N"<>ToString[$N]<>"K"<>ToString[$K]<>".dat"];
-WriteString[statFile, StringRiffle[ToString/@$out, "    "]<>"\n"];
-Close[statFile];
+$statFile = OpenAppend[$statsDir<>"/N"<>ToString[$N]<>"K"<>ToString[$K]<>".dat"];
+WriteString[$statFile, StringRiffle[ToString/@$out, "    "]<>"\n"];
+Close[$statFile];
 ), {k, 1, Length[$files]}]
-)], {$N, 2, 9}];
+)], {$N, $Nmin, $Nmax}];
