@@ -7,3 +7,5 @@ mathematica/plots/
 mathematica/stats*
 
 build/
+plots/
+backup/
