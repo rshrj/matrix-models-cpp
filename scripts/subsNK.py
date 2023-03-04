@@ -11,8 +11,8 @@ def notAvail(Nmax, Kmax):
     return False
 
 def main():
-    Nmax, Kmax = 9, 10
-    NumStates = 10
+    Nmax, Kmax = 3, 3
+    NumStates = 2
 
     runcmd = f'make clean'
     print(runcmd)
