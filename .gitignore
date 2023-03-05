@@ -10,3 +10,4 @@ build/
 plots/
 backup/
 plots/
+*.dat
