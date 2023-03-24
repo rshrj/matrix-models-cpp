@@ -11,3 +11,10 @@ plots/
 backup/
 plots/
 *.dat
+mathematica/notebooks/eigenvalues_2_diff_init.nb
+mathematica/notebooks/eigenvalues_2_diff_init.wls
+mathematica/notebooks/eigenvalues_hist.nb
+mathematica/notebooks/eigenvalues.nb
+mathematica/notebooks/SidebySideComparison.pdf
+mathematica/notebooks/SuperimposedComparison.pdf
+
