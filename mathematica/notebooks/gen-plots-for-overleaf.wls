@@ -12,8 +12,8 @@ Return[False, Module];
 )];
 
 $K = 9;
-$Nmin = 2;
-$Nmax = 9;
+$Nmin = 8;
+$Nmax = 8;
 $tStart = 100;
 $statsDir = "../../runs/Stats-101";
 

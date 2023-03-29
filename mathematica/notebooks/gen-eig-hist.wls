@@ -12,7 +12,7 @@ plotsDir = "../../plots/plots-103-hist";
 If[!DirectoryQ[plotsDir], CreateDirectory[plotsDir]];
 
 Print["importing data."];
-data = Import["../../runs/Trials/N9K9/24788149.dat"];
+data = Import["../../runs/Trials/N9K9/81027575.dat"];
 
 changeNK[9, 9];
 
@@ -26,7 +26,7 @@ eiglist = Flatten @ Table[Eigenvalues @ MatrixPower[matdata[[k, 2]],
 Print["Generating the histogram and exporting it to "<>plotsDir<>"/hist-X2.pdf."];
 plt1 =
     Histogram[
-        eiglist2
+        eiglist
         ,
         400
         ,
