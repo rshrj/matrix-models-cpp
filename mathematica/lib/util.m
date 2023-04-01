@@ -63,6 +63,12 @@ Table[Join[{tData[[k, 1]]}, convertToMatrix/@Partition[tData[[k,2;;]], $N^2-1]],
 )];
 
 
+cMatOne[tData_] := Module[{p}, (
+p = Partition[tData[[2;;]],$N^2-1];
+Join[{tData[[1]]}, Table[p[[k]] . $basisSU, {k, 1 ,$K}]]
+)];
+
+
 TrX2[tpqData_] := Module[{t, Xs}, (
 t = tpqData[[1]];
 Xs = tpqData[[2;;($K+1)]];
