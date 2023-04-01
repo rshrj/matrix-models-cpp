@@ -1,0 +1,319 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12523,        311]
+NotebookOptionsPosition[     11567,        290]
+NotebookOutlinePosition[     12008,        307]
+CellTagsIndexPosition[     11965,        304]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.8884812961347237`*^9, 3.888481326717731*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"b4a5d9a9-ee13-4223-a1aa-63e62440174e"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Get", "[", "\"\<./mathematica/lib/lib2.m\>\"", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Get", "[", "\"\<./mathematica/lib/util.m\>\"", "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.8884813277332907`*^9, 3.888481342909869*^9}, 
+   3.8893201749309874`*^9},ExpressionUUID->"06c2b467-5d88-4c6b-a2b6-\
+f19310c29006"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"plotsDir", "=", " ", "\"\<./plots\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"DirectoryQ", "[", "plotsDir", "]"}]}], ",", " ", 
+    RowBox[{"CreateDirectory", "[", "plotsDir", "]"}]}], "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.888631303730109*^9, 3.888631349131544*^9}, {
+  3.889319896989917*^9, 
+  3.889319898510395*^9}},ExpressionUUID->"ffe64c39-b89a-4a7e-bf31-\
+ccb8efea7f7e"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"MeanData", " ", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"VarData", " ", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "fn", " ", ",", "data", ",", "mns", ",", "vars", ",", "Kval"}], "}"}],
+        ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Kval", " ", "=", "9"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"fn", " ", "=", " ", 
+         RowBox[{"FileNames", "[", 
+          RowBox[{"All", ",", 
+           RowBox[{"\"\<../runs/Trials/N\>\"", "<>", 
+            RowBox[{"ToString", "[", "Nval", "]"}], "<>", "\"\<K\>\"", "<>", 
+            RowBox[{"ToString", "[", "Kval", "]"}]}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{"\"\<Computing for N=\>\"", "<>", 
+          RowBox[{"ToString", "[", "Nval", "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"data", " ", "=", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Import", "[", "#", "]"}], "&"}], "/@", "fn"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", "\"\<Changing N and K\>\"", "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"changeNK", "[", 
+         RowBox[{"Nval", ",", "Kval"}], "]"}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"matdata", " ", "=", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"cMat", "[", "#", "]"}], "&"}], "/@", " ", "data"}]}], ";",
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"mns", " ", "=", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Around", "[", "#", "]"}], "&"}], "/@", 
+          RowBox[{"Table", "[", " ", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"Mean", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"Tr", "[", 
+                  RowBox[{"MatrixPower", "[", 
+                   RowBox[{"#", ",", " ", "n"}], "]"}], "]"}], "&"}], "/@", 
+                RowBox[{
+                 RowBox[{"matdata", "[", 
+                  RowBox[{"[", "d", "]"}], "]"}], "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", " ", "2"}], "]"}], "]"}]}], "]"}], "//",
+               "Chop"}], "//", "Re"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"n", ",", "6", ",", "8"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"d", ",", "1", ",", 
+              RowBox[{"Length", "[", "matdata", "]"}]}], "}"}]}], "]"}]}]}], 
+        ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"vars", " ", "=", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Around", "[", "#", "]"}], "&"}], "/@", 
+          RowBox[{"Table", "[", " ", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"Variance", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"Tr", "[", 
+                  RowBox[{"MatrixPower", "[", 
+                   RowBox[{"#", ",", " ", "n"}], "]"}], "]"}], "&"}], "/@", 
+                RowBox[{
+                 RowBox[{"matdata", "[", 
+                  RowBox[{"[", "d", "]"}], "]"}], "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", " ", "2"}], "]"}], "]"}]}], "]"}], "//",
+               "Chop"}], "//", "Re"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"n", ",", "6", ",", "8"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"d", ",", "1", ",", 
+              RowBox[{"Length", "[", "matdata", "]"}]}], "}"}]}], "]"}]}]}], 
+        ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"MeanData", ",", "mns"}], "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"VarData", ",", "vars"}], "]"}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Export", "[", 
+         RowBox[{"\"\<MeanData.mx\>\"", ",", "MeanData"}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Export", "[", 
+         RowBox[{"\"\<VarData.mx\>\"", ",", "VarData"}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{"\"\<Computing COMPLETE for N=\>\"", "<>", 
+          RowBox[{"ToString", "[", "Nval", "]"}]}], "]"}], ";"}]}], "]"}], 
+     "\[IndentingNewLine]", ",", 
+     RowBox[{"{", 
+      RowBox[{"Nval", ",", "2", ",", "9"}], "}"}]}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<Exporting data\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<MeanData.mx\>\"", ",", "MeanData"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<VarData.mx\>\"", ",", "VarData"}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.889316099645771*^9, 3.889316126897788*^9}, {
+  3.889316344448841*^9, 3.889316397225569*^9}, {3.88931649666463*^9, 
+  3.8893166240401073`*^9}, {3.8893166597434206`*^9, 3.88931670958302*^9}, {
+  3.889316750713828*^9, 3.889316831777687*^9}, {3.889316907929002*^9, 
+  3.889316908182765*^9}, {3.889316960351859*^9, 3.8893171188002386`*^9}, {
+  3.8893171654229193`*^9, 3.889317226857283*^9}, {3.889318091966782*^9, 
+  3.889318092325881*^9}, {3.889318547689271*^9, 3.8893185589300704`*^9}, {
+  3.889319275041218*^9, 3.889319337326435*^9}, {3.889319482577289*^9, 
+  3.889319485088356*^9}, {3.8893196162226295`*^9, 3.8893196168853273`*^9}, {
+  3.8893199167347965`*^9, 3.889319953351559*^9}, {3.8893200059263687`*^9, 
+  3.889320054896132*^9}, {3.889320085408143*^9, 3.889320141727361*^9}, {
+  3.8893213811583385`*^9, 
+  3.889321381637582*^9}},ExpressionUUID->"2e3aaf3b-0749-4b99-b0bf-\
+cda608cf4edf"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<Plotting\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"xval", " ", "=", " ", 
+   RowBox[{"Range", "[", 
+    RowBox[{"2", ",", "9"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"pltmns", " ", "=", " ", 
+  RowBox[{"ListPlot", "[", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Thread", "[", 
+       RowBox[{"{", 
+        RowBox[{"xval", ",", "#"}], "}"}], "]"}], "&"}], "/@", "MeanData"}], 
+    ",", 
+    RowBox[{"PlotLabel", "->", "\"\<Plot of Mean as function on N\>\""}], ",", 
+    RowBox[{"PlotLegends", "->", 
+     RowBox[{"SwatchLegend", "[", 
+      RowBox[{"Automatic", ",", "xval", ",", 
+       RowBox[{"LegendLabel", "\[Rule]", 
+        RowBox[{"Placed", "[", 
+         RowBox[{
+         "\"\<Tr[\\!\\(\\*SuperscriptBox[\\(X\\),n]\\)]; n = \>\"", ",", 
+          "Above"}], "]"}]}], ",", 
+       RowBox[{"LegendFunction", "\[Rule]", "\"\<Frame\>\""}]}], "]"}]}], ",", 
+    RowBox[{"AxesLabel", "->", 
+     RowBox[{"{", 
+      RowBox[{"\"\<N\>\"", ",", "\"\<Mean\>\""}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pltvars", " ", "=", 
+   RowBox[{"ListPlot", "[", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Thread", "[", 
+        RowBox[{"{", 
+         RowBox[{"xval", ",", "#"}], "}"}], "]"}], "&"}], "/@", "MeanData"}], 
+     ",", 
+     RowBox[{"PlotLabel", "->", "\"\<Plot of Variance as function on N\>\""}],
+      ",", 
+     RowBox[{"PlotLegends", "->", 
+      RowBox[{"SwatchLegend", "[", 
+       RowBox[{"Automatic", ",", "xval", ",", 
+        RowBox[{"LegendLabel", "\[Rule]", 
+         RowBox[{"Placed", "[", 
+          RowBox[{
+          "\"\<Tr[\\!\\(\\*SuperscriptBox[\\(X\\),n]\\)]; n = \>\"", ",", 
+           "Above"}], "]"}]}], ",", 
+        RowBox[{"LegendFunction", "\[Rule]", "\"\<Frame\>\""}]}], "]"}]}], 
+     ",", 
+     RowBox[{"AxesLabel", "->", 
+      RowBox[{"{", 
+       RowBox[{"\"\<N\>\"", ",", "\"\<Variance\>\""}], "}"}]}]}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.88931830910761*^9, 3.8893183826653028`*^9}, {
+   3.8893184226647615`*^9, 3.8893184243449445`*^9}, {3.889318464001567*^9, 
+   3.88931849703244*^9}, 3.8893190042822824`*^9, {3.8893190419232416`*^9, 
+   3.88931904291177*^9}, 3.889319082443044*^9, {3.8893191704878817`*^9, 
+   3.889319195312724*^9}, {3.8893192451224613`*^9, 3.889319245974786*^9}, {
+   3.8893193489932485`*^9, 3.8893194330635138`*^9}, {3.8893194678779564`*^9, 
+   3.8893194728695855`*^9}, {3.889319550719187*^9, 3.8893195520383806`*^9}, {
+   3.88931961084662*^9, 3.8893196144242787`*^9}, {3.8893197847150197`*^9, 
+   3.889319788197383*^9}, {3.8893199698930664`*^9, 
+   3.8893199910279913`*^9}},ExpressionUUID->"d7d2a195-c58e-455d-a7c7-\
+5e0423716b9b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<Exporting Plots\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"plotsDir", "<>", "\"\</Plot_of_Means.pdf\>\""}], ",", "pltmns", 
+   ",", 
+   RowBox[{"ImageResolution", "->", "300"}], ",", 
+   RowBox[{"ImageSize", "->", "500"}]}], "]"}], "\n", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"plotsDir", "<>", "\"\</Plot_of_Vars.pdf\>\""}], ",", "pltvars", 
+   ",", 
+   RowBox[{"ImageResolution", "->", "300"}], ",", 
+   RowBox[{"ImageSize", "->", "500"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8893193625339613`*^9, 3.889319391552179*^9}, {
+   3.8893194362389665`*^9, 3.8893194443593965`*^9}, {3.889319623188298*^9, 
+   3.88931962590285*^9}, {3.889319706401908*^9, 3.889319724244383*^9}, 
+   3.8893201613645*^9},ExpressionUUID->"82f2449b-6be2-4103-a722-fa6786c168f9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<Program Completed\>\"", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.8893201966596622`*^9, 
+  3.8893202019572306`*^9}},ExpressionUUID->"3fc63b87-d12f-4874-b65a-\
+7972ad3badab"]
+},
+WindowSize->{1152., 585.6},
+WindowMargins->{{
+  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
+FrontEndVersion->"13.2 for Microsoft Windows (64-bit) (November 18, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"84729f1d-462f-4797-af31-b43335eef7f8"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 269, 5, 28, "Input",ExpressionUUID->"b4a5d9a9-ee13-4223-a1aa-63e62440174e"],
+Cell[830, 27, 352, 8, 48, "Input",ExpressionUUID->"06c2b467-5d88-4c6b-a2b6-f19310c29006"],
+Cell[1185, 37, 497, 14, 48, "Input",ExpressionUUID->"ffe64c39-b89a-4a7e-bf31-ccb8efea7f7e"],
+Cell[1685, 53, 5997, 138, 561, "Input",ExpressionUUID->"2e3aaf3b-0749-4b99-b0bf-cda608cf4edf"],
+Cell[7685, 193, 2770, 67, 162, "Input",ExpressionUUID->"d7d2a195-c58e-455d-a7c7-5e0423716b9b"],
+Cell[10458, 262, 872, 19, 67, "Input",ExpressionUUID->"82f2449b-6be2-4103-a722-fa6786c168f9"],
+Cell[11333, 283, 230, 5, 28, "Input",ExpressionUUID->"3fc63b87-d12f-4874-b65a-7972ad3badab"]
+}
+]
+*)
+
