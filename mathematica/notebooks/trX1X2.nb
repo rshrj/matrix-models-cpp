@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    787647,      16431]
-NotebookOptionsPosition[    785826,      16397]
-NotebookOutlinePosition[    786292,      16415]
-CellTagsIndexPosition[    786249,      16412]
+NotebookDataLength[    807745,      16831]
+NotebookOptionsPosition[    805369,      16788]
+NotebookOutlinePosition[    805835,      16806]
+CellTagsIndexPosition[    805792,      16803]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -8826,6 +8826,53 @@ Cell[BoxData[
  CellLabel->"Out[18]=",ExpressionUUID->"9ab3e04f-84fc-4e46-93a5-da9ce62d98b2"]
 }, Open  ]],
 
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindDistribution", "[", "randEig", "]"}]], "Input",
+ CellChangeTimes->{{3.889673518808834*^9, 3.8896735346289463`*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"5ee9eed8-2fc5-4b64-839e-04510ac01ed7"],
+
+Cell[BoxData[
+ RowBox[{"MixtureDistribution", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "0.24379576823331894`", ",", "0.04967660157964688`", ",", 
+     "0.1886822066709425`", ",", "0.08194801037587494`", ",", 
+     "0.09977834233893436`", ",", "0.04612068729243937`", ",", 
+     "0.289998383508843`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"NormalDistribution", "[", 
+      RowBox[{
+       RowBox[{"-", "3.586056796259088`"}], ",", "1.250472593406488`"}], 
+      "]"}], ",", 
+     RowBox[{"NormalDistribution", "[", 
+      RowBox[{
+       RowBox[{"-", "2.766830343855168`"}], ",", "0.3239661525698527`"}], 
+      "]"}], ",", 
+     RowBox[{"NormalDistribution", "[", 
+      RowBox[{
+       RowBox[{"-", "1.1825743355701255`"}], ",", "0.6296100665558304`"}], 
+      "]"}], ",", 
+     RowBox[{"NormalDistribution", "[", 
+      RowBox[{
+       RowBox[{"-", "0.08627370482865851`"}], ",", "0.4024008540110725`"}], 
+      "]"}], ",", 
+     RowBox[{"NormalDistribution", "[", 
+      RowBox[{"1.1063269449104913`", ",", "0.24717165556277892`"}], "]"}], 
+     ",", 
+     RowBox[{"NormalDistribution", "[", 
+      RowBox[{"2.1989387276740597`", ",", "0.317174656253105`"}], "]"}], ",", 
+     
+     RowBox[{"NormalDistribution", "[", 
+      RowBox[{"3.5516104556819856`", ",", "1.2567278541192706`"}], "]"}]}], 
+    "}"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.889673736221859*^9},
+ CellLabel->"Out[27]=",ExpressionUUID->"cef6f160-d95e-4d5a-96c1-34fe4125615a"]
+}, Open  ]],
+
 Cell[BoxData[
  RowBox[{
   RowBox[{"trX1X2", " ", "=", " ", 
@@ -8851,16 +8898,25 @@ Cell[BoxData[
     RowBox[{"X1", ",", " ", "X2"}], "}"}], " ", "=", " ", 
    RowBox[{"Partition", "[", 
     RowBox[{
-     RowBox[{"RandomVariate", "[", 
+     RowBox[{
       RowBox[{
-       RowBox[{"GaussianUnitaryMatrixDistribution", "[", "$N", "]"}], ",", 
-       " ", "200000"}], "]"}], ",", " ", "100000"}], "]"}]}], ";"}]], "Input",\
-
+       RowBox[{"(", 
+        RowBox[{"#", " ", "-", " ", 
+         RowBox[{
+          FractionBox["1", "$N"], 
+          RowBox[{"Tr", "[", "#", "]"}], "*", 
+          RowBox[{"IdentityMatrix", "[", "$N", "]"}]}]}], ")"}], "&"}], "/@", 
+      
+      RowBox[{"RandomVariate", "[", 
+       RowBox[{
+        RowBox[{"GaussianUnitaryMatrixDistribution", "[", "$N", "]"}], ",", 
+        " ", "200000"}], "]"}]}], ",", " ", "100000"}], "]"}]}], 
+  ";"}]], "Input",
  CellChangeTimes->{{3.889659077228505*^9, 3.889659093147331*^9}, {
-  3.889659140058041*^9, 3.889659167537588*^9}, {3.889667861923829*^9, 
-  3.889667863752825*^9}},
+   3.889659140058041*^9, 3.889659167537588*^9}, {3.889667861923829*^9, 
+   3.889667863752825*^9}, 3.889671845255659*^9},
  FontSize->12,
- CellLabel->"In[20]:=",ExpressionUUID->"3820f083-9652-40a1-a2ff-c65bb22f7d8c"],
+ CellLabel->"In[24]:=",ExpressionUUID->"3820f083-9652-40a1-a2ff-c65bb22f7d8c"],
 
 Cell[BoxData[
  RowBox[{
@@ -8879,7 +8935,7 @@ Cell[BoxData[
        RowBox[{"X1", ",", " ", "X2"}], "}"}], "]"}]}], "//", "Chop"}]}], 
   ";"}]], "Input",
  CellChangeTimes->{{3.8896591813452578`*^9, 3.8896592396966763`*^9}},
- CellLabel->"In[21]:=",ExpressionUUID->"c906d4f4-8816-431f-a224-95603cc25862"],
+ CellLabel->"In[25]:=",ExpressionUUID->"c906d4f4-8816-431f-a224-95603cc25862"],
 
 Cell[CellGroupData[{
 
@@ -8915,7 +8971,7 @@ Cell[BoxData[
  CellChangeTimes->{{3.8896592328478413`*^9, 3.889659286298946*^9}, {
   3.8896632306068974`*^9, 3.889663254657799*^9}, {3.8896637092789583`*^9, 
   3.889663756114361*^9}},
- CellLabel->"In[22]:=",ExpressionUUID->"88ffe23f-9754-4141-bb9e-1bb9881983a8"],
+ CellLabel->"In[26]:=",ExpressionUUID->"88ffe23f-9754-4141-bb9e-1bb9881983a8"],
 
 Cell[BoxData[
  TemplateBox[{
@@ -10492,25 +10548,25 @@ Cell[BoxData[
             RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`]], 
            Directive[
             RGBColor[0.368417, 0.506779, 0.709798]]], {{{
-             RectangleBox[{-4.88, 0.}, 
-              NCache[{-4.86, 
-                Rational[1, 2000]}, {-4.86, 0.0005}], "RoundingRadius" -> 
+             RectangleBox[{-5.4, 0.}, 
+              NCache[{-5.38, 
+                Rational[1, 2000]}, {-5.38, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
-             RectangleBox[{-4.74, 0.}, 
-              NCache[{-4.72, 
-                Rational[1, 2000]}, {-4.72, 0.0005}], "RoundingRadius" -> 
+             RectangleBox[{-4.46, 0.}, 
+              NCache[{-4.44, 
+                Rational[1, 2000]}, {-4.44, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
-             RectangleBox[{-4.2, 0.}, 
-              NCache[{-4.18, 
-                Rational[1, 1000]}, {-4.18, 0.001}], "RoundingRadius" -> 
-              0]}}, {{
-             RectangleBox[{-4.1, 0.}, 
-              NCache[{-4.08, 
-                Rational[1, 2000]}, {-4.08, 0.0005}], "RoundingRadius" -> 
+             RectangleBox[{-4.3, 0.}, 
+              NCache[{-4.28, 
+                Rational[1, 2000]}, {-4.28, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-4.06, 0.}, 
               NCache[{-4.04, 
                 Rational[1, 2000]}, {-4.04, 0.0005}], "RoundingRadius" -> 
+              0]}}, {{
+             RectangleBox[{-3.96, 0.}, 
+              NCache[{-3.94, 
+                Rational[1, 2000]}, {-3.94, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.94, 0.}, 
               NCache[{-3.92, 
@@ -10520,21 +10576,13 @@ Cell[BoxData[
               NCache[{-3.9, 
                 Rational[1, 2000]}, {-3.9, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
-             RectangleBox[{-3.88, 0.}, 
-              NCache[{-3.86, 
-                Rational[3, 2000]}, {-3.86, 0.0015}], "RoundingRadius" -> 
-              0]}}, {{
-             RectangleBox[{-3.84, 0.}, 
-              NCache[{-3.82, 
-                Rational[1, 2000]}, {-3.82, 0.0005}], "RoundingRadius" -> 
-              0]}}, {{
-             RectangleBox[{-3.82, 0.}, 
-              NCache[{-3.8, 
-                Rational[1, 400]}, {-3.8, 0.0025}], "RoundingRadius" -> 
+             RectangleBox[{-3.9, 0.}, 
+              NCache[{-3.88, 
+                Rational[1, 2000]}, {-3.88, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.8, 0.}, 
               NCache[{-3.78, 
-                Rational[1, 1000]}, {-3.78, 0.001}], "RoundingRadius" -> 
+                Rational[1, 2000]}, {-3.78, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.78, 0.}, 
               NCache[{-3.76, 
@@ -10544,37 +10592,37 @@ Cell[BoxData[
               NCache[{-3.74, 
                 Rational[1, 2000]}, {-3.74, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
-             RectangleBox[{-3.74, 0.}, 
-              NCache[{-3.72, 
-                Rational[1, 2000]}, {-3.72, 0.0005}], "RoundingRadius" -> 
-              0]}}, {{
-             RectangleBox[{-3.72, 0.}, 
-              NCache[{-3.7, 
-                Rational[1, 1000]}, {-3.7, 0.001}], "RoundingRadius" -> 
-              0]}}, {{
              RectangleBox[{-3.7, 0.}, 
               NCache[{-3.68, 
                 Rational[1, 2000]}, {-3.68, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
+             RectangleBox[{-3.68, 0.}, 
+              NCache[{-3.66, 
+                Rational[1, 2000]}, {-3.66, 0.0005}], "RoundingRadius" -> 
+              0]}}, {{
+             RectangleBox[{-3.66, 0.}, 
+              NCache[{-3.64, 
+                Rational[1, 1000]}, {-3.64, 0.001}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{-3.64, 0.}, 
               NCache[{-3.62, 
-                Rational[3, 2000]}, {-3.62, 0.0015}], "RoundingRadius" -> 
+                Rational[1, 1000]}, {-3.62, 0.001}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.62, 0.}, 
               NCache[{-3.6, 
                 Rational[3, 2000]}, {-3.6, 0.0015}], "RoundingRadius" -> 
               0]}}, {{
-             RectangleBox[{-3.6, 0.}, 
-              NCache[{-3.58, 
-                Rational[1, 1000]}, {-3.58, 0.001}], "RoundingRadius" -> 
-              0]}}, {{
              RectangleBox[{-3.58, 0.}, 
               NCache[{-3.56, 
-                Rational[1, 1000]}, {-3.56, 0.001}], "RoundingRadius" -> 
+                Rational[1, 2000]}, {-3.56, 0.0005}], "RoundingRadius" -> 
+              0]}}, {{
+             RectangleBox[{-3.56, 0.}, 
+              NCache[{-3.54, 
+                Rational[1, 2000]}, {-3.54, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.54, 0.}, 
               NCache[{-3.52, 
-                Rational[1, 1000]}, {-3.52, 0.001}], "RoundingRadius" -> 
+                Rational[3, 2000]}, {-3.52, 0.0015}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.52, 0.}, 
               NCache[{-3.5, 
@@ -10586,7 +10634,11 @@ Cell[BoxData[
               0]}}, {{
              RectangleBox[{-3.48, 0.}, 
               NCache[{-3.46, 
-                Rational[1, 2000]}, {-3.46, 0.0005}], "RoundingRadius" -> 
+                Rational[1, 500]}, {-3.46, 0.002}], "RoundingRadius" -> 
+              0]}}, {{
+             RectangleBox[{-3.46, 0.}, 
+              NCache[{-3.44, 
+                Rational[1, 1000]}, {-3.44, 0.001}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.44, 0.}, 
               NCache[{-3.42, 
@@ -10594,11 +10646,7 @@ Cell[BoxData[
               0]}}, {{
              RectangleBox[{-3.42, 0.}, 
               NCache[{-3.4, 
-                Rational[3, 1000]}, {-3.4, 0.003}], "RoundingRadius" -> 
-              0]}}, {{
-             RectangleBox[{-3.4, 0.}, 
-              NCache[{-3.38, 
-                Rational[7, 2000]}, {-3.38, 0.0035}], "RoundingRadius" -> 
+                Rational[1, 1000]}, {-3.4, 0.001}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.38, 0.}, 
               NCache[{-3.36, 
@@ -10606,7 +10654,7 @@ Cell[BoxData[
               0]}}, {{
              RectangleBox[{-3.36, 0.}, 
               NCache[{-3.34, 
-                Rational[7, 2000]}, {-3.34, 0.0035}], "RoundingRadius" -> 
+                Rational[1, 1000]}, {-3.34, 0.001}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.34, 0.}, 
               NCache[{-3.32, 
@@ -10614,30 +10662,31 @@ Cell[BoxData[
               0]}}, {{
              RectangleBox[{-3.32, 0.}, 
               NCache[{-3.3, 
-                Rational[1, 400]}, {-3.3, 0.0025}], "RoundingRadius" -> 
+                Rational[1, 1000]}, {-3.3, 0.001}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.3, 0.}, 
               NCache[{-3.28, 
-                Rational[3, 1000]}, {-3.28, 0.003}], "RoundingRadius" -> 
+                Rational[3, 2000]}, {-3.28, 0.0015}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.28, 0.}, 
               NCache[{-3.26, 
-                Rational[3, 1000]}, {-3.26, 0.003}], "RoundingRadius" -> 
+                Rational[3, 2000]}, {-3.26, 0.0015}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.26, 0.}, 
               NCache[{-3.24, 
-                Rational[1, 200]}, {-3.24, 0.005}], "RoundingRadius" -> 
+                Rational[7, 2000]}, {-3.24, 0.0035}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.24, 0.}, 
               NCache[{-3.22, 
-                Rational[1, 500]}, {-3.22, 0.002}], "RoundingRadius" -> 
+                Rational[1, 400]}, {-3.22, 0.0025}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.22, 0.}, 
               NCache[{-3.2, 
-                Rational[1, 250]}, {-3.2, 0.004}], "RoundingRadius" -> 0]}}, {{
+                Rational[1, 400]}, {-3.2, 0.0025}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{-3.2, 0.}, 
               NCache[{-3.18, 
-                Rational[3, 2000]}, {-3.18, 0.0015}], "RoundingRadius" -> 
+                Rational[3, 1000]}, {-3.18, 0.003}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.18, 0.}, 
               NCache[{-3.16, 
@@ -10645,18 +10694,18 @@ Cell[BoxData[
               0]}}, {{
              RectangleBox[{-3.16, 0.}, 
               NCache[{-3.14, 
-                Rational[1, 200]}, {-3.14, 0.005}], "RoundingRadius" -> 
+                Rational[1, 400]}, {-3.14, 0.0025}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.14, 0.}, 
               NCache[{-3.12, 
-                Rational[1, 200]}, {-3.12, 0.005}], "RoundingRadius" -> 
+                Rational[1, 400]}, {-3.12, 0.0025}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.12, 0.}, 
               NCache[{-3.1, 
                 Rational[1, 250]}, {-3.1, 0.004}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{-3.1, 0.}, 
               NCache[{-3.08, 
-                Rational[1, 400]}, {-3.08, 0.0025}], "RoundingRadius" -> 
+                Rational[3, 1000]}, {-3.08, 0.003}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.08, 0.}, 
               NCache[{-3.06, 
@@ -10664,99 +10713,98 @@ Cell[BoxData[
               0]}}, {{
              RectangleBox[{-3.06, 0.}, 
               NCache[{-3.04, 
-                Rational[7, 2000]}, {-3.04, 0.0035}], "RoundingRadius" -> 
+                Rational[1, 400]}, {-3.04, 0.0025}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.04, 0.}, 
               NCache[{-3.02, 
-                Rational[1, 1000]}, {-3.02, 0.001}], "RoundingRadius" -> 
+                Rational[1, 250]}, {-3.02, 0.004}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-3.02, 0.}, 
               NCache[{-3., 
-                Rational[9, 2000]}, {-3., 0.0045}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 200]}, {-3., 0.005}], "RoundingRadius" -> 0]}}, {{
+            
              RectangleBox[{-3., 0.}, 
               NCache[{-2.98, 
-                Rational[3, 1000]}, {-2.98, 0.003}], "RoundingRadius" -> 
+                Rational[13, 2000]}, {-2.98, 0.0065}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.98, 0.}, 
               NCache[{-2.96, 
-                Rational[7, 1000]}, {-2.96, 0.007}], "RoundingRadius" -> 
+                Rational[1, 250]}, {-2.96, 0.004}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.96, 0.}, 
               NCache[{-2.94, 
-                Rational[13, 2000]}, {-2.94, 0.0065}], "RoundingRadius" -> 
+                Rational[11, 2000]}, {-2.94, 0.0055}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.94, 0.}, 
               NCache[{-2.92, 
-                Rational[1, 200]}, {-2.92, 0.005}], "RoundingRadius" -> 
+                Rational[9, 2000]}, {-2.92, 0.0045}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.92, 0.}, 
               NCache[{-2.9, 
-                Rational[7, 2000]}, {-2.9, 0.0035}], "RoundingRadius" -> 
+                Rational[7, 1000]}, {-2.9, 0.007}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.9, 0.}, 
               NCache[{-2.88, 
-                Rational[13, 2000]}, {-2.88, 0.0065}], "RoundingRadius" -> 
+                Rational[3, 500]}, {-2.88, 0.006}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.88, 0.}, 
               NCache[{-2.86, 
-                Rational[21, 2000]}, {-2.86, 0.0105}], "RoundingRadius" -> 
+                Rational[11, 2000]}, {-2.86, 0.0055}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.86, 0.}, 
               NCache[{-2.84, 
-                Rational[9, 1000]}, {-2.84, 0.009}], "RoundingRadius" -> 
+                Rational[19, 2000]}, {-2.84, 0.0095}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.84, 0.}, 
               NCache[{-2.82, 
-                Rational[3, 400]}, {-2.82, 0.0075}], "RoundingRadius" -> 
+                Rational[11, 1000]}, {-2.82, 0.011}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.82, 0.}, 
               NCache[{-2.8, 
-                Rational[21, 2000]}, {-2.8, 0.0105}], "RoundingRadius" -> 
+                Rational[13, 2000]}, {-2.8, 0.0065}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.8, 0.}, 
               NCache[{-2.78, 
-                Rational[1, 125]}, {-2.78, 0.008}], "RoundingRadius" -> 
+                Rational[3, 500]}, {-2.78, 0.006}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.78, 0.}, 
               NCache[{-2.76, 
-                Rational[1, 125]}, {-2.76, 0.008}], "RoundingRadius" -> 
+                Rational[3, 400]}, {-2.76, 0.0075}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.76, 0.}, 
               NCache[{-2.74, 
-                Rational[21, 2000]}, {-2.74, 0.0105}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 100]}, {-2.74, 0.01}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{-2.74, 0.}, 
               NCache[{-2.72, 
-                Rational[9, 1000]}, {-2.72, 0.009}], "RoundingRadius" -> 
+                Rational[7, 500]}, {-2.72, 0.014}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.72, 0.}, 
               NCache[{-2.7, 
-                Rational[17, 2000]}, {-2.7, 0.0085}], "RoundingRadius" -> 
+                Rational[7, 1000]}, {-2.7, 0.007}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.7, 0.}, 
               NCache[{-2.68, 
-                Rational[3, 250]}, {-2.68, 0.012}], "RoundingRadius" -> 
+                Rational[17, 2000]}, {-2.68, 0.0085}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.68, 0.}, 
               NCache[{-2.66, 
-                Rational[27, 2000]}, {-2.66, 0.0135}], "RoundingRadius" -> 
+                Rational[7, 400]}, {-2.66, 0.0175}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.66, 0.}, 
               NCache[{-2.64, 
-                Rational[13, 1000]}, {-2.64, 0.013}], "RoundingRadius" -> 
+                Rational[3, 250]}, {-2.64, 0.012}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.64, 0.}, 
               NCache[{-2.62, 
-                Rational[9, 1000]}, {-2.62, 0.009}], "RoundingRadius" -> 
+                Rational[1, 80]}, {-2.62, 0.0125}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.62, 0.}, 
               NCache[{-2.6, 
-                Rational[21, 2000]}, {-2.6, 0.0105}], "RoundingRadius" -> 
+                Rational[11, 1000]}, {-2.6, 0.011}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.6, 0.}, 
               NCache[{-2.58, 
-                Rational[7, 500]}, {-2.58, 0.014}], "RoundingRadius" -> 
+                Rational[3, 250]}, {-2.58, 0.012}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.58, 0.}, 
               NCache[{-2.56, 
@@ -10764,45 +10812,46 @@ Cell[BoxData[
               0]}}, {{
              RectangleBox[{-2.56, 0.}, 
               NCache[{-2.54, 
-                Rational[9, 1000]}, {-2.54, 0.009}], "RoundingRadius" -> 
+                Rational[29, 2000]}, {-2.54, 0.0145}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.54, 0.}, 
               NCache[{-2.52, 
-                Rational[1, 80]}, {-2.52, 0.0125}], "RoundingRadius" -> 
+                Rational[2, 125]}, {-2.52, 0.016}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.52, 0.}, 
               NCache[{-2.5, 
-                Rational[1, 50]}, {-2.5, 0.02}], "RoundingRadius" -> 0]}}, {{
+                Rational[3, 200]}, {-2.5, 0.015}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{-2.5, 0.}, 
               NCache[{-2.48, 
-                Rational[19, 1000]}, {-2.48, 0.019}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 50]}, {-2.48, 0.02}], "RoundingRadius" -> 0]}}, {{
+            
              RectangleBox[{-2.48, 0.}, 
               NCache[{-2.46, 
-                Rational[7, 400]}, {-2.46, 0.0175}], "RoundingRadius" -> 
+                Rational[41, 2000]}, {-2.46, 0.0205}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.46, 0.}, 
               NCache[{-2.44, 
-                Rational[37, 2000]}, {-2.44, 0.0185}], "RoundingRadius" -> 
+                Rational[3, 125]}, {-2.44, 0.024}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.44, 0.}, 
               NCache[{-2.42, 
-                Rational[23, 1000]}, {-2.42, 0.023}], "RoundingRadius" -> 
+                Rational[51, 2000]}, {-2.42, 0.0255}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.42, 0.}, 
               NCache[{-2.4, 
-                Rational[3, 125]}, {-2.4, 0.024}], "RoundingRadius" -> 0]}}, {{
+                Rational[17, 1000]}, {-2.4, 0.017}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{-2.4, 0.}, 
               NCache[{-2.38, 
-                Rational[21, 1000]}, {-2.38, 0.021}], "RoundingRadius" -> 
+                Rational[47, 2000]}, {-2.38, 0.0235}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.38, 0.}, 
               NCache[{-2.36, 
-                Rational[21, 1000]}, {-2.36, 0.021}], "RoundingRadius" -> 
+                Rational[3, 125]}, {-2.36, 0.024}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.36, 0.}, 
               NCache[{-2.34, 
-                Rational[11, 400]}, {-2.34, 0.0275}], "RoundingRadius" -> 
+                Rational[4, 125]}, {-2.34, 0.032}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.34, 0.}, 
               NCache[{-2.32, 
@@ -10810,35 +10859,34 @@ Cell[BoxData[
               0]}}, {{
              RectangleBox[{-2.32, 0.}, 
               NCache[{-2.3, 
-                Rational[53, 2000]}, {-2.3, 0.0265}], "RoundingRadius" -> 
+                Rational[31, 1000]}, {-2.3, 0.031}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.3, 0.}, 
               NCache[{-2.28, 
-                Rational[61, 2000]}, {-2.28, 0.0305}], "RoundingRadius" -> 
+                Rational[13, 400]}, {-2.28, 0.0325}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.28, 0.}, 
               NCache[{-2.26, 
-                Rational[57, 2000]}, {-2.26, 0.0285}], "RoundingRadius" -> 
+                Rational[11, 400]}, {-2.26, 0.0275}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.26, 0.}, 
               NCache[{-2.24, 
-                Rational[57, 2000]}, {-2.24, 0.0285}], "RoundingRadius" -> 
+                Rational[31, 1000]}, {-2.24, 0.031}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.24, 0.}, 
               NCache[{-2.22, 
-                Rational[33, 1000]}, {-2.22, 0.033}], "RoundingRadius" -> 
+                Rational[13, 400]}, {-2.22, 0.0325}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.22, 0.}, 
               NCache[{-2.2, 
-                Rational[61, 2000]}, {-2.2, 0.0305}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[9, 250]}, {-2.2, 0.036}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{-2.2, 0.}, 
               NCache[{-2.18, 
-                Rational[3, 80]}, {-2.18, 0.0375}], "RoundingRadius" -> 
+                Rational[9, 250]}, {-2.18, 0.036}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.18, 0.}, 
               NCache[{-2.16, 
-                Rational[67, 2000]}, {-2.16, 0.0335}], "RoundingRadius" -> 
+                Rational[79, 2000]}, {-2.16, 0.0395}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.16, 0.}, 
               NCache[{-2.14, 
@@ -10846,1037 +10894,1028 @@ Cell[BoxData[
               0]}}, {{
              RectangleBox[{-2.14, 0.}, 
               NCache[{-2.12, 
-                Rational[9, 200]}, {-2.12, 0.045}], "RoundingRadius" -> 
+                Rational[43, 1000]}, {-2.12, 0.043}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.12, 0.}, 
               NCache[{-2.1, 
-                Rational[11, 250]}, {-2.1, 0.044}], "RoundingRadius" -> 
+                Rational[89, 2000]}, {-2.1, 0.0445}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.1, 0.}, 
               NCache[{-2.08, 
-                Rational[4, 125]}, {-2.08, 0.032}], "RoundingRadius" -> 
+                Rational[17, 400]}, {-2.08, 0.0425}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.08, 0.}, 
               NCache[{-2.06, 
-                Rational[11, 250]}, {-2.06, 0.044}], "RoundingRadius" -> 
+                Rational[91, 2000]}, {-2.06, 0.0455}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.06, 0.}, 
               NCache[{-2.04, 
-                Rational[93, 2000]}, {-2.04, 0.0465}], "RoundingRadius" -> 
+                Rational[53, 1000]}, {-2.04, 0.053}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.04, 0.}, 
               NCache[{-2.02, 
-                Rational[51, 1000]}, {-2.02, 0.051}], "RoundingRadius" -> 
+                Rational[91, 2000]}, {-2.02, 0.0455}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-2.02, 0.}, 
               NCache[{-2., 
-                Rational[11, 200]}, {-2., 0.055}], "RoundingRadius" -> 0]}}, {{
+                Rational[107, 2000]}, {-2., 0.0535}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{-2., 0.}, 
               NCache[{-1.98, 
-                Rational[53, 1000]}, {-1.98, 0.053}], "RoundingRadius" -> 
+                Rational[121, 2000]}, {-1.98, 0.0605}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.98, 0.}, 
               NCache[{-1.96, 
-                Rational[97, 2000]}, {-1.96, 0.0485}], "RoundingRadius" -> 
+                Rational[113, 2000]}, {-1.96, 0.0565}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.96, 0.}, 
               NCache[{-1.94, 
-                Rational[59, 1000]}, {-1.94, 0.059}], "RoundingRadius" -> 
+                Rational[123, 2000]}, {-1.94, 0.0615}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.94, 0.}, 
               NCache[{-1.92, 
-                Rational[123, 2000]}, {-1.92, 0.0615}], "RoundingRadius" -> 
+                Rational[11, 200]}, {-1.92, 0.055}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.92, 0.}, 
               NCache[{-1.9, 
-                Rational[129, 2000]}, {-1.9, 0.0645}], "RoundingRadius" -> 
+                Rational[69, 1000]}, {-1.9, 0.069}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.9, 0.}, 
               NCache[{-1.88, 
-                Rational[127, 2000]}, {-1.88, 0.0635}], "RoundingRadius" -> 
+                Rational[149, 2000]}, {-1.88, 0.0745}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.88, 0.}, 
               NCache[{-1.86, 
-                Rational[129, 2000]}, {-1.86, 0.0645}], "RoundingRadius" -> 
+                Rational[149, 2000]}, {-1.86, 0.0745}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.86, 0.}, 
               NCache[{-1.84, 
-                Rational[71, 1000]}, {-1.84, 0.071}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[3, 40]}, {-1.84, 0.075}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{-1.84, 0.}, 
               NCache[{-1.82, 
-                Rational[77, 1000]}, {-1.82, 0.077}], "RoundingRadius" -> 
+                Rational[147, 2000]}, {-1.82, 0.0735}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.82, 0.}, 
               NCache[{-1.8, 
-                Rational[81, 1000]}, {-1.8, 0.081}], "RoundingRadius" -> 
+                Rational[161, 2000]}, {-1.8, 0.0805}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.8, 0.}, 
               NCache[{-1.78, 
-                Rational[71, 1000]}, {-1.78, 0.071}], "RoundingRadius" -> 
+                Rational[167, 2000]}, {-1.78, 0.0835}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.78, 0.}, 
               NCache[{-1.76, 
-                Rational[79, 1000]}, {-1.76, 0.079}], "RoundingRadius" -> 
+                Rational[139, 2000]}, {-1.76, 0.0695}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.76, 0.}, 
               NCache[{-1.74, 
-                Rational[9, 100]}, {-1.74, 0.09}], "RoundingRadius" -> 0]}}, {{
+                Rational[81, 1000]}, {-1.74, 0.081}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{-1.74, 0.}, 
               NCache[{-1.72, 
-                Rational[11, 125]}, {-1.72, 0.088}], "RoundingRadius" -> 
+                Rational[97, 1000]}, {-1.72, 0.097}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.72, 0.}, 
               NCache[{-1.7, 
-                Rational[23, 250]}, {-1.7, 0.092}], "RoundingRadius" -> 
+                Rational[161, 2000]}, {-1.7, 0.0805}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.7, 0.}, 
               NCache[{-1.68, 
-                Rational[183, 2000]}, {-1.68, 0.0915}], "RoundingRadius" -> 
+                Rational[23, 250]}, {-1.68, 0.092}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.68, 0.}, 
               NCache[{-1.66, 
-                Rational[9, 100]}, {-1.66, 0.09}], "RoundingRadius" -> 0]}}, {{
+                Rational[87, 1000]}, {-1.66, 0.087}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{-1.66, 0.}, 
               NCache[{-1.64, 
-                Rational[13, 125]}, {-1.64, 0.104}], "RoundingRadius" -> 
+                Rational[203, 2000]}, {-1.64, 0.1015}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.64, 0.}, 
               NCache[{-1.62, 
-                Rational[11, 125]}, {-1.62, 0.088}], "RoundingRadius" -> 
+                Rational[191, 2000]}, {-1.62, 0.0955}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.62, 0.}, 
               NCache[{-1.6, 
-                Rational[39, 400]}, {-1.6, 0.0975}], "RoundingRadius" -> 
+                Rational[53, 500]}, {-1.6, 0.106}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.6, 0.}, 
               NCache[{-1.58, 
-                Rational[59, 500]}, {-1.58, 0.118}], "RoundingRadius" -> 
+                Rational[57, 500]}, {-1.58, 0.114}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.58, 0.}, 
               NCache[{-1.56, 
-                Rational[49, 400]}, {-1.56, 0.1225}], "RoundingRadius" -> 
+                Rational[243, 2000]}, {-1.56, 0.1215}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.56, 0.}, 
               NCache[{-1.54, 
-                Rational[27, 250]}, {-1.54, 0.108}], "RoundingRadius" -> 
+                Rational[16, 125]}, {-1.54, 0.128}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.54, 0.}, 
               NCache[{-1.52, 
-                Rational[127, 1000]}, {-1.52, 0.127}], "RoundingRadius" -> 
+                Rational[23, 200]}, {-1.52, 0.115}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.52, 0.}, 
               NCache[{-1.5, 
-                Rational[53, 400]}, {-1.5, 0.1325}], "RoundingRadius" -> 
+                Rational[121, 1000]}, {-1.5, 0.121}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.5, 0.}, 
               NCache[{-1.48, 
-                Rational[291, 2000]}, {-1.48, 0.1455}], "RoundingRadius" -> 
+                Rational[119, 1000]}, {-1.48, 0.119}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.48, 0.}, 
               NCache[{-1.46, 
-                Rational[133, 1000]}, {-1.46, 0.133}], "RoundingRadius" -> 
+                Rational[251, 2000]}, {-1.46, 0.1255}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.46, 0.}, 
               NCache[{-1.44, 
-                Rational[27, 200]}, {-1.44, 0.135}], "RoundingRadius" -> 
+                Rational[147, 1000]}, {-1.44, 0.147}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.44, 0.}, 
               NCache[{-1.42, 
-                Rational[27, 200]}, {-1.42, 0.135}], "RoundingRadius" -> 
+                Rational[57, 400]}, {-1.42, 0.1425}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.42, 0.}, 
               NCache[{-1.4, 
-                Rational[327, 2000]}, {-1.4, 0.1635}], "RoundingRadius" -> 
+                Rational[71, 500]}, {-1.4, 0.142}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.4, 0.}, 
               NCache[{-1.38, 
-                Rational[151, 1000]}, {-1.38, 0.151}], "RoundingRadius" -> 
+                Rational[283, 2000]}, {-1.38, 0.1415}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.38, 0.}, 
               NCache[{-1.36, 
-                Rational[331, 2000]}, {-1.36, 0.1655}], "RoundingRadius" -> 
+                Rational[269, 2000]}, {-1.36, 0.1345}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.36, 0.}, 
               NCache[{-1.34, 
-                Rational[147, 1000]}, {-1.34, 0.147}], "RoundingRadius" -> 
+                Rational[167, 1000]}, {-1.34, 0.167}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.34, 0.}, 
               NCache[{-1.32, 
-                Rational[141, 1000]}, {-1.32, 0.141}], "RoundingRadius" -> 
+                Rational[297, 2000]}, {-1.32, 0.1485}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.32, 0.}, 
               NCache[{-1.3, 
-                Rational[69, 400]}, {-1.3, 0.1725}], "RoundingRadius" -> 
+                Rational[177, 1000]}, {-1.3, 0.177}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.3, 0.}, 
               NCache[{-1.28, 
-                Rational[347, 2000]}, {-1.28, 0.1735}], "RoundingRadius" -> 
+                Rational[363, 2000]}, {-1.28, 0.1815}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.28, 0.}, 
               NCache[{-1.26, 
-                Rational[24, 125]}, {-1.26, 0.192}], "RoundingRadius" -> 
+                Rational[179, 1000]}, {-1.26, 0.179}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.26, 0.}, 
               NCache[{-1.24, 
-                Rational[193, 1000]}, {-1.24, 0.193}], "RoundingRadius" -> 
+                Rational[379, 2000]}, {-1.24, 0.1895}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.24, 0.}, 
               NCache[{-1.22, 
-                Rational[177, 1000]}, {-1.22, 0.177}], "RoundingRadius" -> 
+                Rational[367, 2000]}, {-1.22, 0.1835}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.22, 0.}, 
               NCache[{-1.2, 
-                Rational[19, 100]}, {-1.2, 0.19}], "RoundingRadius" -> 0]}}, {{
+                Rational[17, 100]}, {-1.2, 0.17}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{-1.2, 0.}, 
               NCache[{-1.18, 
-                Rational[379, 2000]}, {-1.18, 0.1895}], "RoundingRadius" -> 
+                Rational[393, 2000]}, {-1.18, 0.1965}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.18, 0.}, 
               NCache[{-1.16, 
-                Rational[219, 1000]}, {-1.16, 0.219}], "RoundingRadius" -> 
+                Rational[411, 2000]}, {-1.16, 0.2055}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.16, 0.}, 
               NCache[{-1.14, 
-                Rational[47, 250]}, {-1.14, 0.188}], "RoundingRadius" -> 
+                Rational[417, 2000]}, {-1.14, 0.2085}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.14, 0.}, 
               NCache[{-1.12, 
-                Rational[107, 500]}, {-1.12, 0.214}], "RoundingRadius" -> 
+                Rational[77, 400]}, {-1.12, 0.1925}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.12, 0.}, 
               NCache[{-1.1, 
-                Rational[17, 80]}, {-1.1, 0.2125}], "RoundingRadius" -> 
+                Rational[199, 1000]}, {-1.1, 0.199}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.1, 0.}, 
               NCache[{-1.08, 
-                Rational[53, 250]}, {-1.08, 0.212}], "RoundingRadius" -> 
+                Rational[217, 1000]}, {-1.08, 0.217}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.08, 0.}, 
               NCache[{-1.06, 
-                Rational[449, 2000]}, {-1.06, 0.2245}], "RoundingRadius" -> 
+                Rational[433, 2000]}, {-1.06, 0.2165}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.06, 0.}, 
               NCache[{-1.04, 
-                Rational[29, 125]}, {-1.04, 0.232}], "RoundingRadius" -> 
+                Rational[481, 2000]}, {-1.04, 0.2405}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.04, 0.}, 
               NCache[{-1.02, 
-                Rational[101, 400]}, {-1.02, 0.2525}], "RoundingRadius" -> 
+                Rational[247, 1000]}, {-1.02, 0.247}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-1.02, 0.}, 
               NCache[{-1., 
-                Rational[483, 2000]}, {-1., 0.2415}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[29, 125]}, {-1., 0.232}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{-1., 0.}, 
               NCache[{-0.98, 
-                Rational[63, 250]}, {-0.98, 0.252}], "RoundingRadius" -> 
+                Rational[479, 2000]}, {-0.98, 0.2395}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.98, 0.}, 
               NCache[{-0.96, 
-                Rational[9, 40]}, {-0.96, 0.225}], "RoundingRadius" -> 0]}}, {{
+                Rational[69, 250]}, {-0.96, 0.276}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{-0.96, 0.}, 
               NCache[{-0.94, 
-                Rational[497, 2000]}, {-0.94, 0.2485}], "RoundingRadius" -> 
+                Rational[99, 400]}, {-0.94, 0.2475}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.94, 0.}, 
               NCache[{-0.92, 
-                Rational[531, 2000]}, {-0.92, 0.2655}], "RoundingRadius" -> 
+                Rational[237, 1000]}, {-0.92, 0.237}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.92, 0.}, 
               NCache[{-0.9, 
-                Rational[269, 1000]}, {-0.9, 0.269}], "RoundingRadius" -> 
+                Rational[281, 1000]}, {-0.9, 0.281}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.9, 0.}, 
               NCache[{-0.88, 
-                Rational[269, 1000]}, {-0.88, 0.269}], "RoundingRadius" -> 
+                Rational[543, 2000]}, {-0.88, 0.2715}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.88, 0.}, 
               NCache[{-0.86, 
-                Rational[533, 2000]}, {-0.86, 0.2665}], "RoundingRadius" -> 
+                Rational[563, 2000]}, {-0.86, 0.2815}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.86, 0.}, 
               NCache[{-0.84, 
-                Rational[147, 500]}, {-0.84, 0.294}], "RoundingRadius" -> 
+                Rational[531, 2000]}, {-0.84, 0.2655}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.84, 0.}, 
               NCache[{-0.82, 
-                Rational[263, 1000]}, {-0.82, 0.263}], "RoundingRadius" -> 
+                Rational[71, 250]}, {-0.82, 0.284}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.82, 0.}, 
               NCache[{-0.8, 
-                Rational[549, 2000]}, {-0.8, 0.2745}], "RoundingRadius" -> 
+                Rational[569, 2000]}, {-0.8, 0.2845}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.8, 0.}, 
               NCache[{-0.78, 
-                Rational[277, 1000]}, {-0.78, 0.277}], "RoundingRadius" -> 
+                Rational[607, 2000]}, {-0.78, 0.3035}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.78, 0.}, 
               NCache[{-0.76, 
-                Rational[37, 125]}, {-0.76, 0.296}], "RoundingRadius" -> 
+                Rational[627, 2000]}, {-0.76, 0.3135}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.76, 0.}, 
               NCache[{-0.74, 
-                Rational[121, 400]}, {-0.74, 0.3025}], "RoundingRadius" -> 
+                Rational[597, 2000]}, {-0.74, 0.2985}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.74, 0.}, 
               NCache[{-0.72, 
-                Rational[627, 2000]}, {-0.72, 0.3135}], "RoundingRadius" -> 
+                Rational[563, 2000]}, {-0.72, 0.2815}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.72, 0.}, 
               NCache[{-0.7, 
-                Rational[311, 1000]}, {-0.7, 0.311}], "RoundingRadius" -> 
+                Rational[79, 250]}, {-0.7, 0.316}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.7, 0.}, 
               NCache[{-0.68, 
-                Rational[77, 250]}, {-0.68, 0.308}], "RoundingRadius" -> 
+                Rational[123, 400]}, {-0.68, 0.3075}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.68, 0.}, 
               NCache[{-0.66, 
-                Rational[5, 16]}, {-0.66, 0.3125}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[8, 25]}, {-0.66, 0.32}], "RoundingRadius" -> 0]}}, {{
+            
              RectangleBox[{-0.66, 0.}, 
               NCache[{-0.64, 
-                Rational[307, 1000]}, {-0.64, 0.307}], "RoundingRadius" -> 
+                Rational[637, 2000]}, {-0.64, 0.3185}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.64, 0.}, 
               NCache[{-0.62, 
-                Rational[7, 20]}, {-0.62, 0.35}], "RoundingRadius" -> 0]}}, {{
-            
+                Rational[157, 500]}, {-0.62, 0.314}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{-0.62, 0.}, 
               NCache[{-0.6, 
-                Rational[701, 2000]}, {-0.6, 0.3505}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[13, 40]}, {-0.6, 0.325}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{-0.6, 0.}, 
               NCache[{-0.58, 
-                Rational[711, 2000]}, {-0.58, 0.3555}], "RoundingRadius" -> 
+                Rational[649, 2000]}, {-0.58, 0.3245}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.58, 0.}, 
               NCache[{-0.56, 
-                Rational[171, 500]}, {-0.56, 0.342}], "RoundingRadius" -> 
+                Rational[669, 2000]}, {-0.56, 0.3345}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.56, 0.}, 
               NCache[{-0.54, 
-                Rational[351, 1000]}, {-0.54, 0.351}], "RoundingRadius" -> 
+                Rational[29, 80]}, {-0.54, 0.3625}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.54, 0.}, 
               NCache[{-0.52, 
-                Rational[713, 2000]}, {-0.52, 0.3565}], "RoundingRadius" -> 
+                Rational[349, 1000]}, {-0.52, 0.349}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.52, 0.}, 
               NCache[{-0.5, 
-                Rational[351, 1000]}, {-0.5, 0.351}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[9, 25]}, {-0.5, 0.36}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{-0.5, 0.}, 
               NCache[{-0.48, 
-                Rational[703, 2000]}, {-0.48, 0.3515}], "RoundingRadius" -> 
+                Rational[71, 200]}, {-0.48, 0.355}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.48, 0.}, 
               NCache[{-0.46, 
-                Rational[361, 1000]}, {-0.46, 0.361}], "RoundingRadius" -> 
+                Rational[46, 125]}, {-0.46, 0.368}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.46, 0.}, 
               NCache[{-0.44, 
-                Rational[741, 2000]}, {-0.44, 0.3705}], "RoundingRadius" -> 
+                Rational[141, 400]}, {-0.44, 0.3525}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.44, 0.}, 
               NCache[{-0.42, 
-                Rational[93, 250]}, {-0.42, 0.372}], "RoundingRadius" -> 
+                Rational[203, 500]}, {-0.42, 0.406}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.42, 0.}, 
               NCache[{-0.4, 
-                Rational[711, 2000]}, {-0.4, 0.3555}], "RoundingRadius" -> 
+                Rational[183, 500]}, {-0.4, 0.366}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.4, 0.}, 
               NCache[{-0.38, 
-                Rational[361, 1000]}, {-0.38, 0.361}], "RoundingRadius" -> 
+                Rational[181, 500]}, {-0.38, 0.362}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.38, 0.}, 
               NCache[{-0.36, 
-                Rational[787, 2000]}, {-0.36, 0.3935}], "RoundingRadius" -> 
+                Rational[721, 2000]}, {-0.36, 0.3605}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.36, 0.}, 
               NCache[{-0.34, 
-                Rational[151, 400]}, {-0.34, 0.3775}], "RoundingRadius" -> 
+                Rational[49, 125]}, {-0.34, 0.392}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.34, 0.}, 
               NCache[{-0.32, 
-                Rational[741, 2000]}, {-0.32, 0.3705}], "RoundingRadius" -> 
+                Rational[783, 2000]}, {-0.32, 0.3915}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.32, 0.}, 
               NCache[{-0.3, 
-                Rational[791, 2000]}, {-0.3, 0.3955}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[37, 100]}, {-0.3, 0.37}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{-0.3, 0.}, 
               NCache[{-0.28, 
-                Rational[183, 500]}, {-0.28, 0.366}], "RoundingRadius" -> 
+                Rational[773, 2000]}, {-0.28, 0.3865}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.28, 0.}, 
               NCache[{-0.26, 
-                Rational[763, 2000]}, {-0.26, 0.3815}], "RoundingRadius" -> 
+                Rational[201, 500]}, {-0.26, 0.402}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.26, 0.}, 
               NCache[{-0.24, 
-                Rational[381, 1000]}, {-0.24, 0.381}], "RoundingRadius" -> 
+                Rational[737, 2000]}, {-0.24, 0.3685}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.24, 0.}, 
               NCache[{-0.22, 
-                Rational[757, 2000]}, {-0.22, 0.3785}], "RoundingRadius" -> 
+                Rational[789, 2000]}, {-0.22, 0.3945}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.22, 0.}, 
               NCache[{-0.2, 
-                Rational[49, 125]}, {-0.2, 0.392}], "RoundingRadius" -> 
+                Rational[371, 1000]}, {-0.2, 0.371}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.2, 0.}, 
               NCache[{-0.18, 
-                Rational[49, 125]}, {-0.18, 0.392}], "RoundingRadius" -> 
+                Rational[373, 1000]}, {-0.18, 0.373}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.18, 0.}, 
               NCache[{-0.16, 
-                Rational[413, 1000]}, {-0.16, 0.413}], "RoundingRadius" -> 
+                Rational[789, 2000]}, {-0.16, 0.3945}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.16, 0.}, 
               NCache[{-0.14, 
-                Rational[213, 500]}, {-0.14, 0.426}], "RoundingRadius" -> 
+                Rational[801, 2000]}, {-0.14, 0.4005}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.14, 0.}, 
               NCache[{-0.12, 
-                Rational[163, 400]}, {-0.12, 0.4075}], "RoundingRadius" -> 
+                Rational[203, 500]}, {-0.12, 0.406}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.12, 0.}, 
               NCache[{-0.1, 
-                Rational[821, 2000]}, {-0.1, 0.4105}], "RoundingRadius" -> 
+                Rational[201, 500]}, {-0.1, 0.402}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.1, 0.}, 
               NCache[{-0.08, 
-                Rational[811, 2000]}, {-0.08, 0.4055}], "RoundingRadius" -> 
+                Rational[809, 2000]}, {-0.08, 0.4045}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.08, 0.}, 
               NCache[{-0.06, 
-                Rational[759, 2000]}, {-0.06, 0.3795}], "RoundingRadius" -> 
+                Rational[161, 400]}, {-0.06, 0.4025}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.06, 0.}, 
               NCache[{-0.04, 
-                Rational[209, 500]}, {-0.04, 0.418}], "RoundingRadius" -> 
+                Rational[791, 2000]}, {-0.04, 0.3955}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.04, 0.}, 
               NCache[{-0.02, 
-                Rational[793, 2000]}, {-0.02, 0.3965}], "RoundingRadius" -> 
+                Rational[49, 125]}, {-0.02, 0.392}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{-0.02, 0.}, 
               NCache[{0., 
-                Rational[197, 500]}, {0., 0.394}], "RoundingRadius" -> 0]}}, {{
+                Rational[411, 1000]}, {0., 0.411}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{0., 0.}, 
               NCache[{0.02, 
-                Rational[841, 2000]}, {0.02, 0.4205}], "RoundingRadius" -> 
+                Rational[401, 1000]}, {0.02, 0.401}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.02, 0.}, 
               NCache[{0.04, 
-                Rational[31, 80]}, {0.04, 0.3875}], "RoundingRadius" -> 
+                Rational[163, 400]}, {0.04, 0.4075}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.04, 0.}, 
               NCache[{0.06, 
-                Rational[837, 2000]}, {0.06, 0.4185}], "RoundingRadius" -> 
+                Rational[203, 500]}, {0.06, 0.406}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.06, 0.}, 
               NCache[{0.08, 
-                Rational[187, 500]}, {0.08, 0.374}], "RoundingRadius" -> 
+                Rational[837, 2000]}, {0.08, 0.4185}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.08, 0.}, 
               NCache[{0.1, 
-                Rational[199, 500]}, {0.1, 0.398}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[2, 5]}, {0.1, 0.4}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{0.1, 0.}, 
               NCache[{0.12, 
-                Rational[797, 2000]}, {0.12, 0.3985}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[41, 100]}, {0.12, 0.41}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{0.12, 0.}, 
               NCache[{0.14, 
-                Rational[197, 500]}, {0.14, 0.394}], "RoundingRadius" -> 
+                Rational[403, 1000]}, {0.14, 0.403}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.14, 0.}, 
               NCache[{0.16, 
-                Rational[749, 2000]}, {0.16, 0.3745}], "RoundingRadius" -> 
+                Rational[777, 2000]}, {0.16, 0.3885}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.16, 0.}, 
               NCache[{0.18, 
-                Rational[401, 1000]}, {0.18, 0.401}], "RoundingRadius" -> 
+                Rational[379, 1000]}, {0.18, 0.379}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.18, 0.}, 
               NCache[{0.2, 
-                Rational[841, 2000]}, {0.2, 0.4205}], "RoundingRadius" -> 
+                Rational[399, 1000]}, {0.2, 0.399}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.2, 0.}, 
               NCache[{0.22, 
-                Rational[407, 1000]}, {0.22, 0.407}], "RoundingRadius" -> 
+                Rational[203, 500]}, {0.22, 0.406}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.22, 0.}, 
               NCache[{0.24, 
-                Rational[147, 400]}, {0.24, 0.3675}], "RoundingRadius" -> 
+                Rational[79, 200]}, {0.24, 0.395}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.24, 0.}, 
               NCache[{0.26, 
-                Rational[711, 2000]}, {0.26, 0.3555}], "RoundingRadius" -> 
+                Rational[803, 2000]}, {0.26, 0.4015}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.26, 0.}, 
               NCache[{0.28, 
-                Rational[803, 2000]}, {0.28, 0.4015}], "RoundingRadius" -> 
+                Rational[77, 200]}, {0.28, 0.385}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.28, 0.}, 
               NCache[{0.3, 
-                Rational[161, 400]}, {0.3, 0.4025}], "RoundingRadius" -> 
+                Rational[157, 400]}, {0.3, 0.3925}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.3, 0.}, 
               NCache[{0.32, 
-                Rational[47, 125]}, {0.32, 0.376}], "RoundingRadius" -> 
+                Rational[51, 125]}, {0.32, 0.408}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.32, 0.}, 
               NCache[{0.34, 
-                Rational[771, 2000]}, {0.34, 0.3855}], "RoundingRadius" -> 
+                Rational[791, 2000]}, {0.34, 0.3955}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.34, 0.}, 
               NCache[{0.36, 
-                Rational[193, 500]}, {0.36, 0.386}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[37, 100]}, {0.36, 0.37}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{0.36, 0.}, 
               NCache[{0.38, 
-                Rational[3, 8]}, {0.38, 0.375}], "RoundingRadius" -> 0]}}, {{
+                Rational[741, 2000]}, {0.38, 0.3705}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{0.38, 0.}, 
               NCache[{0.4, 
-                Rational[743, 2000]}, {0.4, 0.3715}], "RoundingRadius" -> 
+                Rational[779, 2000]}, {0.4, 0.3895}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.4, 0.}, 
               NCache[{0.42, 
-                Rational[337, 1000]}, {0.42, 0.337}], "RoundingRadius" -> 
+                Rational[371, 1000]}, {0.42, 0.371}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.42, 0.}, 
               NCache[{0.44, 
-                Rational[683, 2000]}, {0.44, 0.3415}], "RoundingRadius" -> 
+                Rational[91, 250]}, {0.44, 0.364}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.44, 0.}, 
               NCache[{0.46, 
-                Rational[723, 2000]}, {0.46, 0.3615}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[7, 20]}, {0.46, 0.35}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{0.46, 0.}, 
               NCache[{0.48, 
-                Rational[337, 1000]}, {0.48, 0.337}], "RoundingRadius" -> 
+                Rational[701, 2000]}, {0.48, 0.3505}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.48, 0.}, 
               NCache[{0.5, 
-                Rational[44, 125]}, {0.5, 0.352}], "RoundingRadius" -> 0]}}, {{
+                Rational[187, 500]}, {0.5, 0.374}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{0.5, 0.}, 
               NCache[{0.52, 
-                Rational[7, 20]}, {0.52, 0.35}], "RoundingRadius" -> 0]}}, {{
+                Rational[341, 1000]}, {0.52, 0.341}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{0.52, 0.}, 
               NCache[{0.54, 
-                Rational[707, 2000]}, {0.54, 0.3535}], "RoundingRadius" -> 
+                Rational[141, 400]}, {0.54, 0.3525}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.54, 0.}, 
               NCache[{0.56, 
-                Rational[179, 500]}, {0.56, 0.358}], "RoundingRadius" -> 
+                Rational[71, 200]}, {0.56, 0.355}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.56, 0.}, 
               NCache[{0.58, 
-                Rational[7, 20]}, {0.58, 0.35}], "RoundingRadius" -> 0]}}, {{
+                Rational[71, 200]}, {0.58, 0.355}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{0.58, 0.}, 
               NCache[{0.6, 
-                Rational[689, 2000]}, {0.6, 0.3445}], "RoundingRadius" -> 
+                Rational[351, 1000]}, {0.6, 0.351}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.6, 0.}, 
               NCache[{0.62, 
-                Rational[679, 2000]}, {0.62, 0.3395}], "RoundingRadius" -> 
+                Rational[659, 2000]}, {0.62, 0.3295}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.62, 0.}, 
               NCache[{0.64, 
-                Rational[37, 100]}, {0.64, 0.37}], "RoundingRadius" -> 0]}}, {{
+                Rational[127, 400]}, {0.64, 0.3175}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{0.64, 0.}, 
               NCache[{0.66, 
-                Rational[641, 2000]}, {0.66, 0.3205}], "RoundingRadius" -> 
+                Rational[649, 2000]}, {0.66, 0.3245}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.66, 0.}, 
               NCache[{0.68, 
-                Rational[609, 2000]}, {0.68, 0.3045}], "RoundingRadius" -> 
+                Rational[649, 2000]}, {0.68, 0.3245}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.68, 0.}, 
               NCache[{0.7, 
-                Rational[587, 2000]}, {0.7, 0.2935}], "RoundingRadius" -> 
+                Rational[639, 2000]}, {0.7, 0.3195}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.7, 0.}, 
               NCache[{0.72, 
-                Rational[657, 2000]}, {0.72, 0.3285}], "RoundingRadius" -> 
+                Rational[153, 500]}, {0.72, 0.306}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.72, 0.}, 
               NCache[{0.74, 
-                Rational[31, 100]}, {0.74, 0.31}], "RoundingRadius" -> 0]}}, {{
+                Rational[5, 16]}, {0.74, 0.3125}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{0.74, 0.}, 
               NCache[{0.76, 
-                Rational[613, 2000]}, {0.76, 0.3065}], "RoundingRadius" -> 
+                Rational[117, 400]}, {0.76, 0.2925}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.76, 0.}, 
               NCache[{0.78, 
-                Rational[38, 125]}, {0.78, 0.304}], "RoundingRadius" -> 
+                Rational[153, 500]}, {0.78, 0.306}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.78, 0.}, 
               NCache[{0.8, 
-                Rational[571, 2000]}, {0.8, 0.2855}], "RoundingRadius" -> 
+                Rational[541, 2000]}, {0.8, 0.2705}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.8, 0.}, 
               NCache[{0.82, 
-                Rational[539, 2000]}, {0.82, 0.2695}], "RoundingRadius" -> 
+                Rational[34, 125]}, {0.82, 0.272}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.82, 0.}, 
               NCache[{0.84, 
-                Rational[571, 2000]}, {0.84, 0.2855}], "RoundingRadius" -> 
+                Rational[559, 2000]}, {0.84, 0.2795}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.84, 0.}, 
               NCache[{0.86, 
-                Rational[273, 1000]}, {0.86, 0.273}], "RoundingRadius" -> 
+                Rational[517, 2000]}, {0.86, 0.2585}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.86, 0.}, 
               NCache[{0.88, 
-                Rational[251, 1000]}, {0.88, 0.251}], "RoundingRadius" -> 
+                Rational[139, 500]}, {0.88, 0.278}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.88, 0.}, 
               NCache[{0.9, 
-                Rational[549, 2000]}, {0.9, 0.2745}], "RoundingRadius" -> 
+                Rational[497, 2000]}, {0.9, 0.2485}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.9, 0.}, 
               NCache[{0.92, 
-                Rational[267, 1000]}, {0.92, 0.267}], "RoundingRadius" -> 
+                Rational[33, 125]}, {0.92, 0.264}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.92, 0.}, 
               NCache[{0.94, 
-                Rational[263, 1000]}, {0.94, 0.263}], "RoundingRadius" -> 
+                Rational[257, 1000]}, {0.94, 0.257}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.94, 0.}, 
               NCache[{0.96, 
-                Rational[521, 2000]}, {0.96, 0.2605}], "RoundingRadius" -> 
+                Rational[33, 125]}, {0.96, 0.264}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.96, 0.}, 
               NCache[{0.98, 
-                Rational[507, 2000]}, {0.98, 0.2535}], "RoundingRadius" -> 
+                Rational[491, 2000]}, {0.98, 0.2455}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{0.98, 0.}, 
               NCache[{1., 
-                Rational[127, 500]}, {1., 0.254}], "RoundingRadius" -> 0]}}, {{
+                Rational[19, 80]}, {1., 0.2375}], "RoundingRadius" -> 0]}}, {{
+            
              RectangleBox[{1., 0.}, 
               NCache[{1.02, 
-                Rational[231, 1000]}, {1.02, 0.231}], "RoundingRadius" -> 
+                Rational[477, 2000]}, {1.02, 0.2385}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.02, 0.}, 
               NCache[{1.04, 
-                Rational[9, 40]}, {1.04, 0.225}], "RoundingRadius" -> 0]}}, {{
-            
+                Rational[467, 2000]}, {1.04, 0.2335}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{1.04, 0.}, 
               NCache[{1.06, 
-                Rational[59, 250]}, {1.06, 0.236}], "RoundingRadius" -> 
+                Rational[443, 2000]}, {1.06, 0.2215}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.06, 0.}, 
               NCache[{1.08, 
-                Rational[89, 400]}, {1.08, 0.2225}], "RoundingRadius" -> 
+                Rational[43, 200]}, {1.08, 0.215}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.08, 0.}, 
               NCache[{1.1, 
-                Rational[227, 1000]}, {1.1, 0.227}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[27, 125]}, {1.1, 0.216}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{1.1, 0.}, 
               NCache[{1.12, 
-                Rational[11, 50]}, {1.12, 0.22}], "RoundingRadius" -> 0]}}, {{
-            
+                Rational[433, 2000]}, {1.12, 0.2165}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{1.12, 0.}, 
               NCache[{1.14, 
-                Rational[403, 2000]}, {1.14, 0.2015}], "RoundingRadius" -> 
+                Rational[89, 400]}, {1.14, 0.2225}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.14, 0.}, 
               NCache[{1.16, 
-                Rational[19, 100]}, {1.16, 0.19}], "RoundingRadius" -> 0]}}, {{
+                Rational[43, 200]}, {1.16, 0.215}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{1.16, 0.}, 
               NCache[{1.18, 
-                Rational[431, 2000]}, {1.18, 0.2155}], "RoundingRadius" -> 
+                Rational[413, 2000]}, {1.18, 0.2065}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.18, 0.}, 
               NCache[{1.2, 
-                Rational[83, 400]}, {1.2, 0.2075}], "RoundingRadius" -> 
+                Rational[389, 2000]}, {1.2, 0.1945}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.2, 0.}, 
               NCache[{1.22, 
-                Rational[389, 2000]}, {1.22, 0.1945}], "RoundingRadius" -> 
+                Rational[89, 500]}, {1.22, 0.178}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.22, 0.}, 
               NCache[{1.24, 
-                Rational[397, 2000]}, {1.24, 0.1985}], "RoundingRadius" -> 
+                Rational[341, 2000]}, {1.24, 0.1705}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.24, 0.}, 
               NCache[{1.26, 
-                Rational[357, 2000]}, {1.26, 0.1785}], "RoundingRadius" -> 
+                Rational[91, 500]}, {1.26, 0.182}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.26, 0.}, 
               NCache[{1.28, 
-                Rational[171, 1000]}, {1.28, 0.171}], "RoundingRadius" -> 
+                Rational[373, 2000]}, {1.28, 0.1865}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.28, 0.}, 
               NCache[{1.3, 
-                Rational[67, 400]}, {1.3, 0.1675}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[89, 500]}, {1.3, 0.178}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{1.3, 0.}, 
               NCache[{1.32, 
-                Rational[349, 2000]}, {1.32, 0.1745}], "RoundingRadius" -> 
+                Rational[303, 2000]}, {1.32, 0.1515}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.32, 0.}, 
               NCache[{1.34, 
-                Rational[301, 2000]}, {1.34, 0.1505}], "RoundingRadius" -> 
+                Rational[289, 2000]}, {1.34, 0.1445}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.34, 0.}, 
               NCache[{1.36, 
-                Rational[309, 2000]}, {1.36, 0.1545}], "RoundingRadius" -> 
+                Rational[349, 2000]}, {1.36, 0.1745}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.36, 0.}, 
               NCache[{1.38, 
-                Rational[311, 2000]}, {1.38, 0.1555}], "RoundingRadius" -> 
+                Rational[63, 400]}, {1.38, 0.1575}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.38, 0.}, 
               NCache[{1.4, 
-                Rational[289, 2000]}, {1.4, 0.1445}], "RoundingRadius" -> 
+                Rational[329, 2000]}, {1.4, 0.1645}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.4, 0.}, 
               NCache[{1.42, 
-                Rational[59, 400]}, {1.42, 0.1475}], "RoundingRadius" -> 
+                Rational[279, 2000]}, {1.42, 0.1395}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.42, 0.}, 
               NCache[{1.44, 
-                Rational[269, 2000]}, {1.44, 0.1345}], "RoundingRadius" -> 
+                Rational[29, 200]}, {1.44, 0.145}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.44, 0.}, 
               NCache[{1.46, 
-                Rational[29, 200]}, {1.46, 0.145}], "RoundingRadius" -> 
+                Rational[273, 2000]}, {1.46, 0.1365}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.46, 0.}, 
               NCache[{1.48, 
-                Rational[261, 2000]}, {1.48, 0.1305}], "RoundingRadius" -> 
+                Rational[263, 2000]}, {1.48, 0.1315}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.48, 0.}, 
               NCache[{1.5, 
-                Rational[243, 2000]}, {1.5, 0.1215}], "RoundingRadius" -> 
+                Rational[123, 1000]}, {1.5, 0.123}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.5, 0.}, 
               NCache[{1.52, 
-                Rational[237, 2000]}, {1.52, 0.1185}], "RoundingRadius" -> 
+                Rational[129, 1000]}, {1.52, 0.129}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.52, 0.}, 
               NCache[{1.54, 
-                Rational[49, 400]}, {1.54, 0.1225}], "RoundingRadius" -> 
+                Rational[29, 250]}, {1.54, 0.116}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.54, 0.}, 
               NCache[{1.56, 
-                Rational[1, 8]}, {1.56, 0.125}], "RoundingRadius" -> 0]}}, {{
+                Rational[227, 2000]}, {1.56, 0.1135}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{1.56, 0.}, 
               NCache[{1.58, 
-                Rational[109, 1000]}, {1.58, 0.109}], "RoundingRadius" -> 
+                Rational[217, 2000]}, {1.58, 0.1085}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.58, 0.}, 
               NCache[{1.6, 
-                Rational[229, 2000]}, {1.6, 0.1145}], "RoundingRadius" -> 
+                Rational[213, 2000]}, {1.6, 0.1065}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.6, 0.}, 
               NCache[{1.62, 
-                Rational[107, 1000]}, {1.62, 0.107}], "RoundingRadius" -> 
+                Rational[221, 2000]}, {1.62, 0.1105}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.62, 0.}, 
               NCache[{1.64, 
-                Rational[97, 1000]}, {1.64, 0.097}], "RoundingRadius" -> 
+                Rational[43, 400]}, {1.64, 0.1075}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.64, 0.}, 
               NCache[{1.66, 
-                Rational[1, 10]}, {1.66, 0.1}], "RoundingRadius" -> 0]}}, {{
+                Rational[181, 2000]}, {1.66, 0.0905}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{1.66, 0.}, 
               NCache[{1.68, 
-                Rational[199, 2000]}, {1.68, 0.0995}], "RoundingRadius" -> 
+                Rational[47, 500]}, {1.68, 0.094}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.68, 0.}, 
               NCache[{1.7, 
-                Rational[83, 1000]}, {1.7, 0.083}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[43, 500]}, {1.7, 0.086}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{1.7, 0.}, 
               NCache[{1.72, 
-                Rational[83, 1000]}, {1.72, 0.083}], "RoundingRadius" -> 
+                Rational[39, 400]}, {1.72, 0.0975}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.72, 0.}, 
               NCache[{1.74, 
-                Rational[51, 500]}, {1.74, 0.102}], "RoundingRadius" -> 
+                Rational[43, 500]}, {1.74, 0.086}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.74, 0.}, 
               NCache[{1.76, 
-                Rational[2, 25]}, {1.76, 0.08}], "RoundingRadius" -> 0]}}, {{
+                Rational[161, 2000]}, {1.76, 0.0805}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{1.76, 0.}, 
               NCache[{1.78, 
-                Rational[7, 80]}, {1.78, 0.0875}], "RoundingRadius" -> 0]}}, {{
+                Rational[2, 25]}, {1.78, 0.08}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{1.78, 0.}, 
               NCache[{1.8, 
-                Rational[161, 2000]}, {1.8, 0.0805}], "RoundingRadius" -> 
+                Rational[163, 2000]}, {1.8, 0.0815}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.8, 0.}, 
               NCache[{1.82, 
-                Rational[31, 500]}, {1.82, 0.062}], "RoundingRadius" -> 
+                Rational[127, 2000]}, {1.82, 0.0635}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.82, 0.}, 
               NCache[{1.84, 
-                Rational[167, 2000]}, {1.84, 0.0835}], "RoundingRadius" -> 
+                Rational[133, 2000]}, {1.84, 0.0665}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.84, 0.}, 
               NCache[{1.86, 
-                Rational[73, 1000]}, {1.86, 0.073}], "RoundingRadius" -> 
+                Rational[123, 2000]}, {1.86, 0.0615}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.86, 0.}, 
               NCache[{1.88, 
-                Rational[37, 500]}, {1.88, 0.074}], "RoundingRadius" -> 
+                Rational[123, 2000]}, {1.88, 0.0615}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.88, 0.}, 
               NCache[{1.9, 
-                Rational[123, 2000]}, {1.9, 0.0615}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[13, 200]}, {1.9, 0.065}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{1.9, 0.}, 
               NCache[{1.92, 
-                Rational[119, 2000]}, {1.92, 0.0595}], "RoundingRadius" -> 
+                Rational[139, 2000]}, {1.92, 0.0695}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.92, 0.}, 
               NCache[{1.94, 
-                Rational[123, 2000]}, {1.94, 0.0615}], "RoundingRadius" -> 
+                Rational[61, 1000]}, {1.94, 0.061}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.94, 0.}, 
               NCache[{1.96, 
-                Rational[11, 200]}, {1.96, 0.055}], "RoundingRadius" -> 
+                Rational[29, 500]}, {1.96, 0.058}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.96, 0.}, 
               NCache[{1.98, 
-                Rational[63, 1000]}, {1.98, 0.063}], "RoundingRadius" -> 
+                Rational[109, 2000]}, {1.98, 0.0545}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{1.98, 0.}, 
               NCache[{2., 
-                Rational[13, 250]}, {2., 0.052}], "RoundingRadius" -> 0]}}, {{
-            
+                Rational[117, 2000]}, {2., 0.0585}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{2., 0.}, 
               NCache[{2.02, 
-                Rational[11, 250]}, {2.02, 0.044}], "RoundingRadius" -> 
+                Rational[123, 2000]}, {2.02, 0.0615}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.02, 0.}, 
               NCache[{2.04, 
-                Rational[53, 1000]}, {2.04, 0.053}], "RoundingRadius" -> 
+                Rational[49, 1000]}, {2.04, 0.049}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.04, 0.}, 
               NCache[{2.06, 
-                Rational[89, 2000]}, {2.06, 0.0445}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 20]}, {2.06, 0.05}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.06, 0.}, 
               NCache[{2.08, 
-                Rational[51, 1000]}, {2.08, 0.051}], "RoundingRadius" -> 
+                Rational[91, 2000]}, {2.08, 0.0455}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.08, 0.}, 
               NCache[{2.1, 
-                Rational[89, 2000]}, {2.1, 0.0445}], "RoundingRadius" -> 
+                Rational[99, 2000]}, {2.1, 0.0495}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.1, 0.}, 
               NCache[{2.12, 
-                Rational[43, 1000]}, {2.12, 0.043}], "RoundingRadius" -> 
+                Rational[17, 400]}, {2.12, 0.0425}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.12, 0.}, 
               NCache[{2.14, 
-                Rational[83, 2000]}, {2.14, 0.0415}], "RoundingRadius" -> 
+                Rational[39, 1000]}, {2.14, 0.039}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.14, 0.}, 
               NCache[{2.16, 
-                Rational[19, 500]}, {2.16, 0.038}], "RoundingRadius" -> 
+                Rational[87, 2000]}, {2.16, 0.0435}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.16, 0.}, 
               NCache[{2.18, 
-                Rational[67, 2000]}, {2.18, 0.0335}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[3, 80]}, {2.18, 0.0375}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.18, 0.}, 
               NCache[{2.2, 
-                Rational[33, 1000]}, {2.2, 0.033}], "RoundingRadius" -> 
+                Rational[37, 1000]}, {2.2, 0.037}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.2, 0.}, 
               NCache[{2.22, 
-                Rational[57, 2000]}, {2.22, 0.0285}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[3, 80]}, {2.22, 0.0375}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.22, 0.}, 
               NCache[{2.24, 
-                Rational[29, 1000]}, {2.24, 0.029}], "RoundingRadius" -> 
+                Rational[57, 2000]}, {2.24, 0.0285}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.24, 0.}, 
               NCache[{2.26, 
-                Rational[3, 125]}, {2.26, 0.024}], "RoundingRadius" -> 0]}}, {{
+                Rational[67, 2000]}, {2.26, 0.0335}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{2.26, 0.}, 
               NCache[{2.28, 
-                Rational[4, 125]}, {2.28, 0.032}], "RoundingRadius" -> 0]}}, {{
+                Rational[13, 500]}, {2.28, 0.026}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{2.28, 0.}, 
               NCache[{2.3, 
-                Rational[11, 400]}, {2.3, 0.0275}], "RoundingRadius" -> 
+                Rational[63, 2000]}, {2.3, 0.0315}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.3, 0.}, 
               NCache[{2.32, 
-                Rational[27, 1000]}, {2.32, 0.027}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[4, 125]}, {2.32, 0.032}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.32, 0.}, 
               NCache[{2.34, 
                 Rational[59, 2000]}, {2.34, 0.0295}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.34, 0.}, 
               NCache[{2.36, 
-                Rational[57, 2000]}, {2.36, 0.0285}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[3, 125]}, {2.36, 0.024}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.36, 0.}, 
               NCache[{2.38, 
-                Rational[7, 250]}, {2.38, 0.028}], "RoundingRadius" -> 0]}}, {{
+                Rational[3, 100]}, {2.38, 0.03}], "RoundingRadius" -> 0]}}, {{
+            
              RectangleBox[{2.38, 0.}, 
               NCache[{2.4, 
-                Rational[47, 2000]}, {2.4, 0.0235}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[7, 400]}, {2.4, 0.0175}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.4, 0.}, 
               NCache[{2.42, 
-                Rational[53, 2000]}, {2.42, 0.0265}], "RoundingRadius" -> 
+                Rational[47, 2000]}, {2.42, 0.0235}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.42, 0.}, 
               NCache[{2.44, 
-                Rational[33, 2000]}, {2.44, 0.0165}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[3, 125]}, {2.44, 0.024}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.44, 0.}, 
               NCache[{2.46, 
-                Rational[53, 2000]}, {2.46, 0.0265}], "RoundingRadius" -> 
+                Rational[9, 400]}, {2.46, 0.0225}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.46, 0.}, 
               NCache[{2.48, 
-                Rational[11, 500]}, {2.48, 0.022}], "RoundingRadius" -> 
+                Rational[7, 400]}, {2.48, 0.0175}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.48, 0.}, 
               NCache[{2.5, 
-                Rational[31, 2000]}, {2.5, 0.0155}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[7, 400]}, {2.5, 0.0175}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.5, 0.}, 
               NCache[{2.52, 
-                Rational[17, 1000]}, {2.52, 0.017}], "RoundingRadius" -> 
+                Rational[41, 2000]}, {2.52, 0.0205}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.52, 0.}, 
               NCache[{2.54, 
-                Rational[2, 125]}, {2.54, 0.016}], "RoundingRadius" -> 0]}}, {{
+                Rational[21, 1000]}, {2.54, 0.021}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{2.54, 0.}, 
               NCache[{2.56, 
-                Rational[27, 2000]}, {2.56, 0.0135}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 80]}, {2.56, 0.0125}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.56, 0.}, 
               NCache[{2.58, 
-                Rational[29, 2000]}, {2.58, 0.0145}], "RoundingRadius" -> 
+                Rational[7, 400]}, {2.58, 0.0175}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.58, 0.}, 
               NCache[{2.6, 
-                Rational[27, 2000]}, {2.6, 0.0135}], "RoundingRadius" -> 
+                Rational[23, 2000]}, {2.6, 0.0115}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.6, 0.}, 
               NCache[{2.62, 
-                Rational[27, 2000]}, {2.62, 0.0135}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[3, 200]}, {2.62, 0.015}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.62, 0.}, 
               NCache[{2.64, 
-                Rational[27, 2000]}, {2.64, 0.0135}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 125]}, {2.64, 0.008}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.64, 0.}, 
               NCache[{2.66, 
-                Rational[2, 125]}, {2.66, 0.016}], "RoundingRadius" -> 0]}}, {{
+                Rational[13, 1000]}, {2.66, 0.013}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{2.66, 0.}, 
               NCache[{2.68, 
-                Rational[13, 1000]}, {2.68, 0.013}], "RoundingRadius" -> 
+                Rational[29, 2000]}, {2.68, 0.0145}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.68, 0.}, 
               NCache[{2.7, 
-                Rational[23, 2000]}, {2.7, 0.0115}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 100]}, {2.7, 0.01}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.7, 0.}, 
               NCache[{2.72, 
-                Rational[21, 2000]}, {2.72, 0.0105}], "RoundingRadius" -> 
+                Rational[17, 2000]}, {2.72, 0.0085}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.72, 0.}, 
               NCache[{2.74, 
-                Rational[11, 1000]}, {2.74, 0.011}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[7, 500]}, {2.74, 0.014}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.74, 0.}, 
               NCache[{2.76, 
-                Rational[29, 2000]}, {2.76, 0.0145}], "RoundingRadius" -> 
+                Rational[17, 2000]}, {2.76, 0.0085}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.76, 0.}, 
               NCache[{2.78, 
-                Rational[17, 2000]}, {2.78, 0.0085}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 100]}, {2.78, 0.01}], "RoundingRadius" -> 0]}}, {{
+            
              RectangleBox[{2.78, 0.}, 
               NCache[{2.8, 
-                Rational[17, 2000]}, {2.8, 0.0085}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 100]}, {2.8, 0.01}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.8, 0.}, 
               NCache[{2.82, 
-                Rational[9, 2000]}, {2.82, 0.0045}], "RoundingRadius" -> 
+                Rational[13, 2000]}, {2.82, 0.0065}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.82, 0.}, 
               NCache[{2.84, 
-                Rational[17, 2000]}, {2.84, 0.0085}], "RoundingRadius" -> 
+                Rational[9, 1000]}, {2.84, 0.009}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.84, 0.}, 
               NCache[{2.86, 
-                Rational[19, 2000]}, {2.86, 0.0095}], "RoundingRadius" -> 
+                Rational[3, 400]}, {2.86, 0.0075}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.86, 0.}, 
               NCache[{2.88, 
-                Rational[9, 1000]}, {2.88, 0.009}], "RoundingRadius" -> 
+                Rational[11, 2000]}, {2.88, 0.0055}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.88, 0.}, 
               NCache[{2.9, 
-                Rational[1, 250]}, {2.9, 0.004}], "RoundingRadius" -> 0]}}, {{
-            
+                Rational[9, 2000]}, {2.9, 0.0045}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{2.9, 0.}, 
               NCache[{2.92, 
-                Rational[1, 250]}, {2.92, 0.004}], "RoundingRadius" -> 0]}}, {{
+                Rational[3, 500]}, {2.92, 0.006}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.92, 0.}, 
               NCache[{2.94, 
-                Rational[17, 2000]}, {2.94, 0.0085}], "RoundingRadius" -> 
+                Rational[3, 400]}, {2.94, 0.0075}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{2.94, 0.}, 
               NCache[{2.96, 
-                Rational[3, 400]}, {2.96, 0.0075}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 250]}, {2.96, 0.004}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.96, 0.}, 
               NCache[{2.98, 
-                Rational[7, 2000]}, {2.98, 0.0035}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 250]}, {2.98, 0.004}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{2.98, 0.}, 
               NCache[{3., 
-                Rational[3, 500]}, {3., 0.006}], "RoundingRadius" -> 0]}}, {{
+                Rational[1, 200]}, {3., 0.005}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{3., 0.}, 
               NCache[{3.02, 
-                Rational[1, 250]}, {3.02, 0.004}], "RoundingRadius" -> 0]}}, {{
+                Rational[1, 200]}, {3.02, 0.005}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{3.02, 0.}, 
               NCache[{3.04, 
-                Rational[11, 2000]}, {3.04, 0.0055}], "RoundingRadius" -> 
+                Rational[7, 1000]}, {3.04, 0.007}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{3.04, 0.}, 
               NCache[{3.06, 
-                Rational[7, 2000]}, {3.06, 0.0035}], "RoundingRadius" -> 
+                Rational[9, 2000]}, {3.06, 0.0045}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{3.06, 0.}, 
               NCache[{3.08, 
-                Rational[7, 1000]}, {3.08, 0.007}], "RoundingRadius" -> 
+                Rational[1, 400]}, {3.08, 0.0025}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{3.08, 0.}, 
               NCache[{3.1, 
-                Rational[7, 2000]}, {3.1, 0.0035}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 250]}, {3.1, 0.004}], "RoundingRadius" -> 0]}}, {{
+            
              RectangleBox[{3.1, 0.}, 
               NCache[{3.12, 
-                Rational[1, 200]}, {3.12, 0.005}], "RoundingRadius" -> 0]}}, {{
+                Rational[9, 2000]}, {3.12, 0.0045}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{3.12, 0.}, 
               NCache[{3.14, 
                 Rational[1, 400]}, {3.14, 0.0025}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{3.14, 0.}, 
               NCache[{3.16, 
-                Rational[3, 2000]}, {3.16, 0.0015}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 500]}, {3.16, 0.002}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{3.16, 0.}, 
               NCache[{3.18, 
                 Rational[1, 250]}, {3.18, 0.004}], "RoundingRadius" -> 0]}}, {{
@@ -11885,64 +11924,68 @@ Cell[BoxData[
                 Rational[1, 400]}, {3.2, 0.0025}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{3.2, 0.}, 
               NCache[{3.22, 
-                Rational[1, 2000]}, {3.22, 0.0005}], "RoundingRadius" -> 
+                Rational[11, 2000]}, {3.22, 0.0055}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{3.22, 0.}, 
               NCache[{3.24, 
-                Rational[1, 400]}, {3.24, 0.0025}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 500]}, {3.24, 0.002}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{3.24, 0.}, 
               NCache[{3.26, 
-                Rational[1, 1000]}, {3.26, 0.001}], "RoundingRadius" -> 
+                Rational[3, 1000]}, {3.26, 0.003}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{3.26, 0.}, 
               NCache[{3.28, 
-                Rational[3, 2000]}, {3.28, 0.0015}], "RoundingRadius" -> 
+                Rational[1, 400]}, {3.28, 0.0025}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{3.28, 0.}, 
               NCache[{3.3, 
-                Rational[3, 2000]}, {3.3, 0.0015}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 1000]}, {3.3, 0.001}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{3.3, 0.}, 
               NCache[{3.32, 
-                Rational[1, 250]}, {3.32, 0.004}], "RoundingRadius" -> 0]}}, {{
+                Rational[7, 2000]}, {3.32, 0.0035}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{3.32, 0.}, 
               NCache[{3.34, 
-                Rational[1, 1000]}, {3.34, 0.001}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 500]}, {3.34, 0.002}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{3.34, 0.}, 
               NCache[{3.36, 
-                Rational[1, 2000]}, {3.36, 0.0005}], "RoundingRadius" -> 
+                Rational[1, 1000]}, {3.36, 0.001}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{3.36, 0.}, 
               NCache[{3.38, 
-                Rational[1, 500]}, {3.38, 0.002}], "RoundingRadius" -> 0]}}, {{
+                Rational[3, 2000]}, {3.38, 0.0015}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{3.38, 0.}, 
               NCache[{3.4, 
-                Rational[1, 500]}, {3.4, 0.002}], "RoundingRadius" -> 0]}}, {{
-            
+                Rational[1, 400]}, {3.4, 0.0025}], "RoundingRadius" -> 0]}}, {{
+             RectangleBox[{3.4, 0.}, 
+              NCache[{3.42, 
+                Rational[1, 500]}, {3.42, 0.002}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{3.42, 0.}, 
               NCache[{3.44, 
-                Rational[3, 2000]}, {3.44, 0.0015}], "RoundingRadius" -> 
+                Rational[1, 2000]}, {3.44, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
+             RectangleBox[{3.44, 0.}, 
+              NCache[{3.46, 
+                Rational[1, 500]}, {3.46, 0.002}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{3.46, 0.}, 
               NCache[{3.48, 
-                Rational[1, 500]}, {3.48, 0.002}], "RoundingRadius" -> 0]}}, {{
+                Rational[1, 2000]}, {3.48, 0.0005}], "RoundingRadius" -> 
+              0]}}, {{
              RectangleBox[{3.48, 0.}, 
               NCache[{3.5, 
                 Rational[1, 1000]}, {3.5, 0.001}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{3.5, 0.}, 
               NCache[{3.52, 
-                Rational[3, 2000]}, {3.52, 0.0015}], "RoundingRadius" -> 
+                Rational[1, 1000]}, {3.52, 0.001}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{3.52, 0.}, 
               NCache[{3.54, 
-                Rational[1, 2000]}, {3.54, 0.0005}], "RoundingRadius" -> 
+                Rational[1, 400]}, {3.54, 0.0025}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{3.54, 0.}, 
               NCache[{3.56, 
-                Rational[3, 2000]}, {3.56, 0.0015}], "RoundingRadius" -> 
-              0]}}, {{
+                Rational[1, 500]}, {3.56, 0.002}], "RoundingRadius" -> 0]}}, {{
              RectangleBox[{3.56, 0.}, 
               NCache[{3.58, 
                 Rational[1, 1000]}, {3.58, 0.001}], "RoundingRadius" -> 
@@ -11951,80 +11994,68 @@ Cell[BoxData[
               NCache[{3.6, 
                 Rational[1, 2000]}, {3.6, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
-             RectangleBox[{3.6, 0.}, 
-              NCache[{3.62, 
-                Rational[1, 1000]}, {3.62, 0.001}], "RoundingRadius" -> 
+             RectangleBox[{3.62, 0.}, 
+              NCache[{3.64, 
+                Rational[1, 1000]}, {3.64, 0.001}], "RoundingRadius" -> 
               0]}}, {{
-             RectangleBox[{3.66, 0.}, 
-              NCache[{3.68, 
-                Rational[3, 2000]}, {3.68, 0.0015}], "RoundingRadius" -> 
+             RectangleBox[{3.64, 0.}, 
+              NCache[{3.66, 
+                Rational[1, 400]}, {3.66, 0.0025}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{3.7, 0.}, 
               NCache[{3.72, 
-                Rational[1, 1000]}, {3.72, 0.001}], "RoundingRadius" -> 
+                Rational[1, 2000]}, {3.72, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{3.72, 0.}, 
               NCache[{3.74, 
-                Rational[1, 1000]}, {3.74, 0.001}], "RoundingRadius" -> 
+                Rational[1, 2000]}, {3.74, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{3.74, 0.}, 
               NCache[{3.76, 
-                Rational[1, 2000]}, {3.76, 0.0005}], "RoundingRadius" -> 
+                Rational[3, 2000]}, {3.76, 0.0015}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{3.76, 0.}, 
               NCache[{3.78, 
-                Rational[1, 1000]}, {3.78, 0.001}], "RoundingRadius" -> 
+                Rational[1, 2000]}, {3.78, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{3.78, 0.}, 
               NCache[{3.8, 
                 Rational[1, 1000]}, {3.8, 0.001}], "RoundingRadius" -> 0]}}, {{
-             RectangleBox[{3.8, 0.}, 
-              NCache[{3.82, 
-                Rational[1, 2000]}, {3.82, 0.0005}], "RoundingRadius" -> 
-              0]}}, {{
              RectangleBox[{3.82, 0.}, 
               NCache[{3.84, 
-                Rational[1, 1000]}, {3.84, 0.001}], "RoundingRadius" -> 
+                Rational[1, 2000]}, {3.84, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
-             RectangleBox[{3.84, 0.}, 
-              NCache[{3.86, 
-                Rational[1, 1000]}, {3.86, 0.001}], "RoundingRadius" -> 
+             RectangleBox[{3.86, 0.}, 
+              NCache[{3.88, 
+                Rational[1, 2000]}, {3.88, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
              RectangleBox[{3.88, 0.}, 
               NCache[{3.9, 
                 Rational[1, 2000]}, {3.9, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
-             RectangleBox[{3.9, 0.}, 
-              NCache[{3.92, 
-                Rational[1, 2000]}, {3.92, 0.0005}], "RoundingRadius" -> 
+             RectangleBox[{3.92, 0.}, 
+              NCache[{3.94, 
+                Rational[1, 2000]}, {3.94, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
-             RectangleBox[{4.06, 0.}, 
-              NCache[{4.08, 
-                Rational[1, 1000]}, {4.08, 0.001}], "RoundingRadius" -> 
+             RectangleBox[{3.94, 0.}, 
+              NCache[{3.96, 
+                Rational[1, 2000]}, {3.96, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
-             RectangleBox[{4.08, 0.}, 
-              NCache[{4.1, 
-                Rational[1, 2000]}, {4.1, 0.0005}], "RoundingRadius" -> 
+             RectangleBox[{4.04, 0.}, 
+              NCache[{4.06, 
+                Rational[1, 2000]}, {4.06, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
-             RectangleBox[{4.18, 0.}, 
-              NCache[{4.2, 
-                Rational[1, 2000]}, {4.2, 0.0005}], "RoundingRadius" -> 
+             RectangleBox[{4.1, 0.}, 
+              NCache[{4.12, 
+                Rational[1, 2000]}, {4.12, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
-             RectangleBox[{4.2, 0.}, 
-              NCache[{4.22, 
-                Rational[1, 2000]}, {4.22, 0.0005}], "RoundingRadius" -> 
+             RectangleBox[{4.16, 0.}, 
+              NCache[{4.18, 
+                Rational[1, 2000]}, {4.18, 0.0005}], "RoundingRadius" -> 
               0]}}, {{
-             RectangleBox[{4.28, 0.}, 
-              NCache[{4.3, 
-                Rational[1, 2000]}, {4.3, 0.0005}], "RoundingRadius" -> 
-              0]}}, {{
-             RectangleBox[{4.38, 0.}, 
-              NCache[{4.4, 
-                Rational[1, 2000]}, {4.4, 0.0005}], "RoundingRadius" -> 
-              0]}}, {{
-             RectangleBox[{4.42, 0.}, 
-              NCache[{4.44, 
-                Rational[1, 2000]}, {4.44, 0.0005}], "RoundingRadius" -> 
+             RectangleBox[{4.66, 0.}, 
+              NCache[{4.68, 
+                Rational[1, 2000]}, {4.68, 0.0005}], "RoundingRadius" -> 
               0]}}}}, {}, {}}}}}, {{{{{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
 {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
 {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
@@ -12066,11 +12097,10 @@ Cell[BoxData[
 {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
 {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
 {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
-{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
-{}, {}}, {}}}}}, {
-    AspectRatio -> NCache[GoldenRatio^(-1), 0.6180339887498948], 
+{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}}, \
+{}}}}}, {AspectRatio -> NCache[GoldenRatio^(-1), 0.6180339887498948], 
      Axes -> {True, True}, AxesLabel -> {None, None}, 
-     AxesOrigin -> {-5.0664, 0.}, Frame -> True, FrameLabel -> {{
+     AxesOrigin -> {-5.6016, 0.}, Frame -> True, FrameLabel -> {{
         FormBox[
          TagBox[
          "\"\\!\\(\\*OverscriptBox[\\(\[Rho]\\), \\(^\\)]\\)\"", HoldForm], 
@@ -12084,7 +12114,7 @@ Cell[BoxData[
      GridLines -> {None, None}, GridLinesStyle -> Directive[
        GrayLevel[0.5, 0.4]], ImageSize -> 500, PlotLabel -> FormBox[
        StyleBox["\"N = 9, T = 10000.\"", StripOnInput -> False], 
-       TraditionalForm], PlotRange -> {{-4.88, 4.44}, {All, All}}, 
+       TraditionalForm], PlotRange -> {{-5.4, 4.68}, {All, All}}, 
      PlotRangePadding -> {{
         Scaled[0.02], 
         Scaled[0.02]}, {None, 
@@ -12172,6 +12202,347 @@ Cell[BoxData[
                     "RGBColorSwatchTemplate"]}], "]"}]}], "}"}], ",", 
                RowBox[{"{", 
                  RowBox[{
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", 
+                    RowBox[{"Opacity", "[", "0.`", "]"}], "]"}], "]"}], ",", 
+                    
+                    TemplateBox[<|"color" -> GrayLevel[1]|>, 
+                    "GrayLevelColorSwatchTemplate"]}], "]"}], ",", 
                    RowBox[{"Directive", "[", 
                     RowBox[{
                     RowBox[{"Opacity", "[", "0.5`", "]"}], ",", 
@@ -16391,9 +16762,29 @@ Cell[BoxData[
          RowBox[{#2, ",", "After"}], "]"}]}], "]"}]& )]], "Output",
  CellChangeTimes->{{3.889659236309875*^9, 3.889659287745706*^9}, 
    3.88966321895658*^9, {3.889663724472991*^9, 3.889663757191173*^9}, 
-   3.889667875596637*^9},
- CellLabel->"Out[22]=",ExpressionUUID->"a5e4f699-af82-4bb7-993f-8130f38bd768"]
-}, Open  ]]
+   3.889667875596637*^9, 3.889671880108164*^9},
+ CellLabel->"Out[26]=",ExpressionUUID->"0664036a-b75b-41f9-9b1d-405221779c12"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Mean", "[", "trX1X2rand", "]"}]], "Input",
+ CellChangeTimes->{{3.8896715291772833`*^9, 3.889671534888371*^9}},
+ CellLabel->"In[23]:=",ExpressionUUID->"a98f168f-239f-48af-92df-4c395981d6c0"],
+
+Cell[BoxData[
+ RowBox[{"-", "0.008402979670710927`"}]], "Output",
+ CellChangeTimes->{3.889671535307715*^9},
+ CellLabel->"Out[23]=",ExpressionUUID->"c5258f61-1823-43c4-acc9-a393df9d060a"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"trX12", " ", "=", " ", 
+  RowBox[{"Tr", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.88967156075235*^9, 
+  3.889671566416133*^9}},ExpressionUUID->"cb022b84-4ce0-480c-bfb9-\
+ff7399efa4f3"]
 },
 WindowSize->{1437., 761.25},
 WindowMargins->{{417., -414.}, {-23.25, 72.}},
@@ -16419,20 +16810,29 @@ Cell[738, 24, 281, 6, 36, "Input",ExpressionUUID->"93349df1-04de-4115-b16c-fa2aa
 Cell[1022, 32, 355, 8, 61, "Input",ExpressionUUID->"b43a0c53-671b-40b3-aa9a-f36b49a0e62b"],
 Cell[1380, 42, 397, 9, 37, "Input",ExpressionUUID->"b0eb71f1-bfa8-4618-9a89-45b05ef97ca8"],
 Cell[1780, 53, 317, 7, 39, "Input",ExpressionUUID->"90fc2341-ebf5-47db-992a-2c80917096b2"],
-Cell[2100, 62, 1048, 25, 59, "Input",ExpressionUUID->"b099c47a-7ce6-4237-80ae-9a73cc53dc33"],
+Cell[2100, 62, 1048, 25, 117, "Input",ExpressionUUID->"b099c47a-7ce6-4237-80ae-9a73cc53dc33"],
 Cell[3151, 89, 516, 13, 39, "Input",ExpressionUUID->"121f4dae-6704-478c-b001-136f15420439"],
 Cell[3670, 104, 986, 25, 89, "Input",ExpressionUUID->"849b82bc-8cea-4a33-b053-93731c511358"],
 Cell[CellGroupData[{
 Cell[4681, 133, 1542, 34, 218, "Input",ExpressionUUID->"4e30233d-6c0d-4357-a13a-e0d05170be51"],
 Cell[6226, 169, 420772, 8656, 460, "Output",ExpressionUUID->"9ab3e04f-84fc-4e46-93a5-da9ce62d98b2"]
 }, Open  ]],
-Cell[427013, 8828, 571, 16, 37, "Input",ExpressionUUID->"7bc233d0-4443-4de2-b3b2-ef58bf3728b1"],
-Cell[427587, 8846, 619, 16, 39, "Input",ExpressionUUID->"3820f083-9652-40a1-a2ff-c65bb22f7d8c"],
-Cell[428209, 8864, 600, 17, 42, "Input",ExpressionUUID->"c906d4f4-8816-431f-a224-95603cc25862"],
 Cell[CellGroupData[{
-Cell[428834, 8885, 1499, 32, 240, "Input",ExpressionUUID->"88ffe23f-9754-4141-bb9e-1bb9881983a8"],
-Cell[430336, 8919, 355474, 7475, 465, "Output",ExpressionUUID->"a5e4f699-af82-4bb7-993f-8130f38bd768"]
-}, Open  ]]
+Cell[427035, 8830, 222, 3, 37, "Input",ExpressionUUID->"5ee9eed8-2fc5-4b64-839e-04510ac01ed7"],
+Cell[427260, 8835, 1480, 37, 122, "Output",ExpressionUUID->"cef6f160-d95e-4d5a-96c1-34fe4125615a"]
+}, Open  ]],
+Cell[428755, 8875, 571, 16, 37, "Input",ExpressionUUID->"7bc233d0-4443-4de2-b3b2-ef58bf3728b1"],
+Cell[429329, 8893, 923, 25, 56, "Input",ExpressionUUID->"3820f083-9652-40a1-a2ff-c65bb22f7d8c"],
+Cell[430255, 8920, 600, 17, 42, "Input",ExpressionUUID->"c906d4f4-8816-431f-a224-95603cc25862"],
+Cell[CellGroupData[{
+Cell[430880, 8941, 1499, 32, 240, "Input",ExpressionUUID->"88ffe23f-9754-4141-bb9e-1bb9881983a8"],
+Cell[432382, 8975, 372317, 7790, 465, "Output",ExpressionUUID->"0664036a-b75b-41f9-9b1d-405221779c12"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[804736, 16770, 213, 3, 37, "Input",ExpressionUUID->"a98f168f-239f-48af-92df-4c395981d6c0"],
+Cell[804952, 16775, 186, 3, 43, "Output",ExpressionUUID->"c5258f61-1823-43c4-acc9-a393df9d060a"]
+}, Open  ]],
+Cell[805153, 16781, 212, 5, 40, "Input",ExpressionUUID->"cb022b84-4ce0-480c-bfb9-ff7399efa4f3"]
 }
 ]
 *)
