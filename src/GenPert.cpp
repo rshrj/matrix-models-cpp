@@ -10,8 +10,8 @@ int main(int argc, char **argv)
   using namespace std;
   using namespace boost::numeric::odeint;
 
-  const size_t N = 2;
-  const size_t K = 2;
+  const size_t N = 9;
+  const size_t K = 9;
 
   const string f_file = "./external/F/N" + to_string(N) + ".dat";
   const f_type<N> masterF(f_file);
@@ -38,32 +38,15 @@ int main(int argc, char **argv)
     return (EXIT_FAILURE);
   }
 
-  ofstream outfile;
+  auto fstate = loadState<N, K>("./runs/States/N" + to_string(N) + "K" + to_string(K) + "/" + pickedState);
 
-  string outdir = "./runs/Trials/N" + to_string(N) + "K" + to_string(K) + "/";
+  string filename = randomName();
+
+  auto state = perturbRandomly<N, K>(fstate, pow(10, -6), masterF);
+
+  string outdir = "./runs/States/N" + to_string(N) + "K" + to_string(K) + "/";
   filesystem::create_directories(outdir);
-
-  outfile.open(outdir + pickedState);
-
-  auto state = loadState<N, K>("./runs/States/N" + to_string(N) + "K" + to_string(K) + "/" + pickedState);
-
-  container_type<N, K> q = state.first;
-  container_type<N, K> p = state.second;
-
-  typedef symplectic_rkn_sb3a_mclachlan<container_type<N, K>> stepper_type;
-
-  const double start_time = 0.0;
-  const double end_time = 1000.0;
-  const double dt = 0.1;
-
-  integrate_const(
-      stepper_type(),
-      make_pair(bfss_coor<N, K>(), bfss_momentum<N, K>(masterF)),
-      make_pair(boost::ref(q), boost::ref(p)),
-      start_time,
-      end_time,
-      dt,
-      streaming_observer_elements_with_momenta<N, K>(outfile));
+  saveState<N, K>(state, outdir + filename + ".dat");
 
   return (EXIT_SUCCESS);
 }
