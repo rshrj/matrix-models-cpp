@@ -14,8 +14,9 @@ def notAvail(Nmin, Nmax):
 def main():
     Nmin = 9
     Nmax = 9
-    T = 0.3
+    T = 500.0
     dt = 0.1
+    numJobs = 24
 
     runcmd = f'make clean'
     print(runcmd)
@@ -55,7 +56,7 @@ def main():
                 file.write(runcmd + '\n')
     file.close()
 
-    os.system("parallel --jobs 2 < ./scripts/K9/list_run.txt")
+    os.system(f"parallel --jobs {numJobs} < ./scripts/K9/list_run.txt")
     # for N in range(Nmin, Nmax + 1):
     #         print(f'N = {N}, K = {K}:')
 

@@ -14,7 +14,7 @@ def notAvail(Nmin, Nmax):
 def main():
     Nmin = 9
     Nmax = 9
-    NumStates = 50
+    NumStates = 1
 
     runcmd = f'make clean'
     print(runcmd)
