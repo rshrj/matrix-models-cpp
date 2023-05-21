@@ -1,6 +1,9 @@
 #!/usr/bin/env wolframscript
 (* ::Package:: *)
 
+SetDirectory[NotebookDirectory[]]
+
+
 <<MaTeX`;
 
 
@@ -23,9 +26,9 @@ If[!DirectoryQ[plotsDir], CreateDirectory[plotsDir]];
 Print["importing data 1"];
 
 
-data[1] = Import["../../../runs/Trials/N9K9/12279703.dat"];
+data[1] = Import["../../../runs/Trials/N9K9/12279703-1.dat"];
 Print["importing data 2"];
-data[2] = Import["../../../runs/Trials/N9K9/12279703.dat"];
+data[2] = Import["../../../runs/Trials/N9K9/15650383-1.dat"];
 
 
 changeNK[9, 9];
