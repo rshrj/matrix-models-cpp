@@ -23,9 +23,9 @@ If[!DirectoryQ[plotsDir], CreateDirectory[plotsDir]];
 Print["importing data 1"];
 
 
-data[1] = Import["../../../runs/Trials/N9K9/12279703.dat"];
+data[1] = Import["/data1/rishi/bfss-cpp/mar-24/runs/Trials/N9K9/65397444.dat"];
 Print["importing data 2"];
-data[2] = Import["../../../runs/Trials/N9K9/12279703.dat"];
+data[2] = Import["/data1/rishi/bfss-cpp/mar-24/runs/Trials/N9K9/51757549.dat"];
 
 
 changeNK[9, 9];
