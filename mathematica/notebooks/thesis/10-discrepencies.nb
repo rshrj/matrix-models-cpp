@@ -1,0 +1,79 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2436,         71]
+NotebookOptionsPosition[      1785,         52]
+NotebookOutlinePosition[      2177,         68]
+CellTagsIndexPosition[      2134,         65]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.892888604517557*^9, 3.8928886151173563`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"46d8c02d-a659-4bbc-81f1-6a4ab282fd23"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"disc", " ", "=", " ", 
+   RowBox[{
+   "Import", "[", "\"\<../../../plots/plots-thesis/7-discrepencies.dat\>\"", 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8928886176924667`*^9, 3.892888632458276*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"b2ce158a-6f78-4bd2-a69a-20eab682d273"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<../../../plots/plots-thesis/7-discrepencies.dat\>\"", ",", " ", 
+   RowBox[{"SetPrecision", "[", 
+    RowBox[{"disc", ",", " ", "4"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.8928886342325287`*^9, 3.892888657387002*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"8922895f-3c63-4442-a524-2447792a1be8"],
+
+Cell[BoxData["\<\"../../../plots/plots-thesis/7-discrepencies.dat\"\>"], \
+"Output",
+ CellChangeTimes->{3.8928886375034657`*^9, 3.892888689923711*^9},
+ CellLabel->"Out[4]=",ExpressionUUID->"67540d0c-4cc4-41fd-aed9-e246bfe84049"]
+}, Open  ]]
+},
+WindowSize->{717., 761.25},
+WindowMargins->{{417., 306.}, {-23.25, 72.}},
+FrontEndVersion->"13.2 for Linux x86 (64-bit) (January 30, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"7b3a751d-5b3d-46d9-8129-94aebad6ba7d"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 269, 5, 29, "Input",ExpressionUUID->"46d8c02d-a659-4bbc-81f1-6a4ab282fd23"],
+Cell[830, 27, 323, 7, 32, "Input",ExpressionUUID->"b2ce158a-6f78-4bd2-a69a-20eab682d273"],
+Cell[CellGroupData[{
+Cell[1178, 38, 360, 6, 56, "Input",ExpressionUUID->"8922895f-3c63-4442-a524-2447792a1be8"],
+Cell[1541, 46, 228, 3, 82, "Output",ExpressionUUID->"67540d0c-4cc4-41fd-aed9-e246bfe84049"]
+}, Open  ]]
+}
+]
+*)
+

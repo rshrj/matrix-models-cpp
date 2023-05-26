@@ -1,6 +1,9 @@
 #!/usr/bin/env wolframscript
 (* ::Package:: *)
 
+SetDirectory[NotebookDirectory[]]
+
+
 <<MaTeX`;
 
 

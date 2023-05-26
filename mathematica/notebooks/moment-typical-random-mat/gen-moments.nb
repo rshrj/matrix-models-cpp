@@ -1,0 +1,209 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8279,        201]
+NotebookOptionsPosition[      7578,        181]
+NotebookOutlinePosition[      7970,        197]
+CellTagsIndexPosition[      7927,        194]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.894097892766437*^9, 3.8940978975145187`*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"72962cc1-7b03-413c-9bb7-5c6ddfc6b8ca"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Get", "[", "\"\<../../lib/lib2.m\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Get", "[", "\"\<../../lib/util.m\>\"", "]"}], ";"}]}], "Code",
+ InitializationCell->True,
+ CellChangeTimes->{{3.8940978990130167`*^9, 3.8940979223471127`*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"feab9d32-b155-48cd-9fac-28b513fa3c22"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$K", " ", "=", " ", "9"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nMax", " ", "=", " ", "12"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"$TrialsFolder", " ", "=", " ", "\"\<../../../runs/Trials\>\""}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"$statsDir", " ", "=", " ", "\"\<../../../runs/Stats-Moments\>\""}],
+   ";"}], "\n", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"DirectoryQ", "[", "$statsDir", "]"}]}], ",", " ", 
+    RowBox[{"CreateDirectory", "[", "$statsDir", "]"}]}], "]"}], 
+  ";"}]}], "Code",
+ InitializationCell->True,
+ CellChangeTimes->{{3.894097930696869*^9, 3.894097978846727*^9}, {
+  3.894098211832574*^9, 3.894098216227641*^9}, {3.894098421815363*^9, 
+  3.8940984305372066`*^9}, {3.8940987400840816`*^9, 
+  3.8940987495160437`*^9}},ExpressionUUID->"561f3883-1cde-4e48-ac26-\
+882c0e8318c6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"dir", ",", " ", "files"}], "}"}], ",", " ", 
+      RowBox[{"(", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Print", "[", 
+         RowBox[{"\"\<N = \>\"", "<>", 
+          RowBox[{"ToString", "@", "$N"}], "<>", "\"\<, K = \>\"", "<>", 
+          RowBox[{"ToString", "@", "$K"}]}], "]"}], ";", 
+        RowBox[{"dir", " ", "=", " ", 
+         RowBox[{"$TrialsFolder", "<>", "\"\</N\>\"", "<>", 
+          RowBox[{"ToString", "@", "$N"}], "<>", "\"\<K\>\"", "<>", 
+          RowBox[{"ToString", "@", "$K"}]}]}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"files", " ", "=", " ", 
+         RowBox[{"FileNames", "[", 
+          RowBox[{"All", ",", " ", "dir"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{
+          RowBox[{"ToString", "@", 
+           RowBox[{"Length", "[", "files", "]"}]}], "<>", "\"\< found.\>\""}],
+          "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{"Module", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "data", ",", " ", "rad", ",", " ", "\[Sigma]", " ", ",", " ", 
+              "out", ",", " ", "$statFile"}], "}"}], ",", " ", 
+            RowBox[{"(", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"Print", "[", 
+               RowBox[{"\"\<Importing \>\"", "<>", 
+                RowBox[{"ToString", "[", 
+                 RowBox[{"files", "[", 
+                  RowBox[{"[", "kk", "]"}], "]"}], "]"}]}], "]"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"data", " ", "=", " ", 
+               RowBox[{"Import", "[", 
+                RowBox[{"files", "[", 
+                 RowBox[{"[", "kk", "]"}], "]"}], "]"}]}], ";", "\n", 
+              "\[IndentingNewLine]", 
+              RowBox[{"Print", "[", "\"\<Computing TrXiXi\>\"", "]"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"rad", " ", "=", " ", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"radius", "/@", "data"}], ")"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", " ", "2"}], "]"}], "]"}]}], ";", "\n", 
+              "\[IndentingNewLine]", 
+              RowBox[{"Print", "[", "\"\<Computing stats\>\"", "]"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"\[Sigma]", " ", "=", " ", 
+               RowBox[{"StandardDeviation", "[", "rad", "]"}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"out", " ", "=", " ", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"FileBaseName", "[", 
+                  RowBox[{"files", "[", 
+                   RowBox[{"[", "kk", "]"}], "]"}], "]"}], ",", " ", 
+                 RowBox[{"Mean", "[", "rad", "]"}], ",", " ", "\[Sigma]"}], 
+                "}"}]}], ";", "\[IndentingNewLine]", 
+              RowBox[{"Do", "[", 
+               RowBox[{
+                RowBox[{"(", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"Print", "[", 
+                   RowBox[{"\"\<n = \>\"", "<>", 
+                    RowBox[{"ToString", "@", "n"}]}], "]"}], ";", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{"AppendTo", "[", 
+                   RowBox[{"out", ",", " ", 
+                    FractionBox[
+                    RowBox[{"CentralMoment", "[", 
+                    RowBox[{"rad", ",", " ", "n"}], "]"}], 
+                    SuperscriptBox["\[Sigma]", "n"]]}], "]"}], ";"}], 
+                 "\[IndentingNewLine]", ")"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"n", ",", " ", "3", ",", " ", "nMax"}], "}"}]}], 
+               "]"}], ";", "\n", "\[IndentingNewLine]", 
+              RowBox[{"Print", "[", "\"\<Exporting\>\"", "]"}], ";", 
+              RowBox[{"$statFile", " ", "=", " ", 
+               RowBox[{"OpenAppend", "[", 
+                RowBox[{"$statsDir", "<>", "\"\</N\>\"", "<>", 
+                 RowBox[{"ToString", "[", "$N", "]"}], "<>", "\"\<K\>\"", "<>", 
+                 RowBox[{"ToString", "[", "$K", "]"}], "<>", "\"\<.dat\>\""}],
+                 "]"}]}], ";", "\[IndentingNewLine]", 
+              RowBox[{"WriteString", "[", 
+               RowBox[{"$statFile", ",", " ", 
+                RowBox[{
+                 RowBox[{"StringRiffle", "[", 
+                  RowBox[{
+                   RowBox[{"ToString", "/@", "out"}], ",", " ", 
+                   "\"\<    \>\""}], "]"}], "<>", "\"\<\\n\>\""}]}], "]"}], 
+              ";", "\[IndentingNewLine]", 
+              RowBox[{"Close", "[", "$statFile", "]"}], ";"}], 
+             "\[IndentingNewLine]", ")"}]}], "]"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"kk", ",", " ", "1", ",", " ", 
+            RowBox[{"Length", "[", "files", "]"}]}], "}"}]}], "]"}]}], 
+       "\[IndentingNewLine]", ")"}]}], "]"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"$N", ",", " ", "3", ",", " ", "9"}], "}"}]}], "]"}], 
+  ";"}]], "Code",
+ InitializationCell->True,
+ CellChangeTimes->{{3.894097994791335*^9, 3.894098200982136*^9}, {
+  3.8940982486776323`*^9, 3.894098394719597*^9}, {3.894098526846126*^9, 
+  3.8940985316529007`*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"0c0bb427-91f8-4645-8e32-9d7df4ee8063"]
+},
+WindowSize->{717., 761.25},
+WindowMargins->{{417., 306.}, {-23.25, 72.}},
+FrontEndVersion->"13.2 for Linux x86 (64-bit) (January 30, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"b61c166a-1bfc-4f7c-bb79-b40a75f6f9bc"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 269, 5, 29, "Input",ExpressionUUID->"72962cc1-7b03-413c-9bb7-5c6ddfc6b8ca"],
+Cell[830, 27, 374, 8, 72, "Code",ExpressionUUID->"feab9d32-b155-48cd-9fac-28b513fa3c22",
+ InitializationCell->True],
+Cell[1207, 37, 899, 23, 134, "Code",ExpressionUUID->"561f3883-1cde-4e48-ac26-882c0e8318c6",
+ InitializationCell->True],
+Cell[2109, 62, 5465, 117, 760, "Code",ExpressionUUID->"0c0bb427-91f8-4645-8e32-9d7df4ee8063",
+ InitializationCell->True]
+}
+]
+*)
+
