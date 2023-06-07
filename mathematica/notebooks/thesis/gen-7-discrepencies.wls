@@ -16,7 +16,7 @@ texStyle={FontFamily->"Times",FontSize->12};
 cm = 72/2.54;
 
 
-plotsDir = "../../../plots/plots-thesis";
+plotsDir = "../../../runs/Stats-301";
 If[!DirectoryQ[plotsDir], CreateDirectory[plotsDir]];
 
 
@@ -27,11 +27,11 @@ changeNK[9, 9];
 
 
 Print["importing data 1"];
-data[1] = Import["../../../runs/Trials/N9K9/12279703-1.dat"];
+data[1] = Import["/data1/rishi/bfss-cpp/mar-24/runs/Trials/N9K9/65397444.dat"];
 Print["importing data 2"];
-data[2] = Import["../../../runs/Trials/N9K9/15650383-1.dat"];
+data[2] = Import["/data1/rishi/bfss-cpp/mar-24/runs/Trials/N9K9/49513575.dat"];
 Print["importing data 3"];
-data[3] = Import["../../../runs/Trials/N9K9/15650383-1.dat"];
+data[3] = Import["/data1/rishi/bfss-cpp/mar-24/runs/Trials/N9K9/88551834.dat"];
 Print["making gue samples"];
 randmat = Partition[(# - 1/$N Tr[#]*IdentityMatrix[$N])&/@RandomVariate[GaussianUnitaryMatrixDistribution[1/Sqrt[\[Alpha] $N], $N], 100000*$K], $K];
 

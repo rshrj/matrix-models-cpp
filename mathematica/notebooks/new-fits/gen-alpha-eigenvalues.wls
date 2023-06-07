@@ -27,7 +27,7 @@ If[!DirectoryQ[$statsDir], CreateDirectory[$statsDir]];
 Do[Module[{$dirname, $files, $data, $cmatdata, $stats, $out, $statFile}, (
 Print["N = "<>ToString@$N<>", K = "<>ToString@$K];
 changeNK[$N, $K];
-$dirname = "../../../runs/Trials/N"<>ToString@$N<>"K"<>ToString@$K;
+$dirname = "/data1/rishi/bfss-cpp/feb-27/runs/Trials/N"<>ToString@$N<>"K"<>ToString@$K;
 $files = FileBaseName/@FileNames[All, $dirname];
 Do[(
 Print["k = "<>ToString@k<>": "<>ToString@$files[[k]]];
@@ -46,7 +46,12 @@ $out = Join[{$files[[k]]}, Flatten@$stats];
 $statFile = OpenAppend[$statsDir<>"/N"<>ToString[$N]<>"K"<>ToString[$K]<>".dat"];
 WriteString[$statFile, StringRiffle[ToString/@$out, "    "]<>"\n"];
 Close[$statFile];
-), {k, 1, Length[$files]}]
+), {k, 1, Length[$files]}];
+
+$statFile = OpenAppend[$statsDir<>"/N"<>ToString[$N]<>"K"<>ToString[$K]<>".dat"];
+WriteString[$statFile, "\n"];
+Close[$statFile];
+
 )], {$N, $Nmin, $Nmax}]//AbsoluteTiming
 
 
