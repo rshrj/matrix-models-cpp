@@ -45,7 +45,7 @@ boost::array<double, N * N - 1> randomState()
 }
 
 template <size_t N, size_t K>
-std::pair<container_type<N, K>, container_type<N, K>> randomStateFixedEnergy(const double E, const f_type<N> F)
+std::pair<container_type<N, K>, container_type<N, K>> randomStateFixedEnergy(const double en, const f_type<N> F)
 {
   container_type<N, K> q;
   for (size_t k = 0; k < K; ++k)
@@ -59,7 +59,7 @@ std::pair<container_type<N, K>, container_type<N, K>> randomStateFixedEnergy(con
     p[k] = 0.0;
   }
 
-  double eRatio = E / energy(q, p, F);
+  double eRatio = en / energy(q, p, F);
 
   for (size_t k = 0; k < K; ++k)
   {

@@ -16,6 +16,8 @@ def main():
     Nmax = 9
     NumStates = 1
 
+    energy = 1000.0
+
     runcmd = f'make clean'
     print(runcmd)
     os.system(runcmd)
@@ -28,6 +30,7 @@ def main():
 
             filedata = filedata.replace('N = 2', f'N = {N}')
             filedata = filedata.replace('K = 2', f'K = {K}')
+            filedata = filedata.replace('en = 1.0', f'en = {energy}')
 
             with open(f'./cache/GenStates-Corrected-N{N}K{K}.cpp', 'w') as file:
                 file.write(filedata)
