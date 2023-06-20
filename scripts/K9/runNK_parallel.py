@@ -12,9 +12,9 @@ def notAvail(Nmin, Nmax):
     return False
 
 def main():
-    Nmin = 9
-    Nmax = 9
-    T = 500.0
+    Nmin = 4
+    Nmax = 8
+    T = 10000.0
     dt = 0.1
     numJobs = 24
 
