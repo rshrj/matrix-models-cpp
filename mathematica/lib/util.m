@@ -28,6 +28,21 @@ p =ArrayReshape[p, {$K, $N^2-1}];
 comm[x1_, x2_, $f_]:=Table[Sum[$f[[a, b, c]]*(x1[[b]]x2[[c]]-x1[[c]]x2[[b]]), {b, 1, $N^2-1}, {c, b+1, $N^2-1}], {a, 1, $N^2-1}];
 
 
+kin[tqpData_]:=Module[{q, p}, (
+p =tqpData[[1+(Length[tqpData]+1)/2;;]];
+
+{tqpData//First, 1/4 Total@(#^2&/@p)}
+)];
+
+
+pot[tqpData_]:=Module[{q, p}, (
+q = tqpData[[2;;(Length[tqpData]+1)/2]];
+q =ArrayReshape[q, {$K, $N^2-1}];
+
+{tqpData//First, 1/4 Sum[Total@(#^2&/@comm[q[[i]], q[[j]], $fSU]), {i, 1, $K}, {j, i+1, $K}]}
+)];
+
+
 energy[tqpData_]:=Module[{q, p, cc}, (
 q = tqpData[[2;;(Length[tqpData]+1)/2]];
 p =tqpData[[1+(Length[tqpData]+1)/2;;]];
