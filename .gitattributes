@@ -1,0 +1,11 @@
+mathematica/** linguist-vendored
+plots_shiva/** linguist-vendored
+docs/** linguist-documentation
+
+*.hpp linguist-language=C++
+
+**/*.nb linguist-vendored
+**/*.wls linguist-vendored
+**/*.mx linguist-vendored
+external/** linguist-generated
+**/*.dat linguist-generated
