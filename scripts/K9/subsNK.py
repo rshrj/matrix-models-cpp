@@ -12,8 +12,8 @@ def notAvail(Nmin, Nmax):
     return False
 
 def main():
-    Nmin = 4
-    Nmax = 8
+    Nmin = 9
+    Nmax = 9
     NumStates = 50
 
     runcmd = f'make clean'

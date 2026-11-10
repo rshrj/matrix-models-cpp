@@ -12,11 +12,11 @@ def notAvail(Nmin, Nmax):
     return False
 
 def main():
-    Nmin = 4
-    Nmax = 8
+    Nmin = 9
+    Nmax = 9
     T = 10000.0
     dt = 0.1
-    numJobs = 24
+    numJobs = 50
 
     runcmd = f'make clean'
     print(runcmd)
